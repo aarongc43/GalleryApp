@@ -1,0 +1,4 @@
+GalleryApp/node_modules/
+GalleryApp/Gemfile.lock
+GalleryApp/vendor
+GalleryApp/.DS_Store
