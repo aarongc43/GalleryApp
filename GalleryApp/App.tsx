@@ -44,7 +44,7 @@ function Section({children, title}: SectionProps): JSX.Element {
       </Text>
       <Text
         style={[
-          styles.sectionDescription,
+          styles.textNY,
           {
             color: isDarkMode ? Colors.light : Colors.dark,
           },
@@ -112,6 +112,26 @@ const styles = StyleSheet.create({
   },
   highlight: {
     fontWeight: '700',
+  },
+  textRegular: {
+    fontSize: 24,
+    fontFamily: 'ACaslonPro-Regular',
+  },
+  textBoldItalic: {
+    fontSize: 24,
+    fontFamily: 'ACaslonPro-Regular',
+  },
+  textBold: {
+    fontSize: 24,
+    fontFamily: 'ACaslonPro-Regular',
+  },
+  textItalic: {
+    fontSize: 24,
+    fontFamily: 'ACaslonPro-Regular',
+  },
+  textNY: {
+    fontSize: 24,
+    fontFamily: 'NY Irvin',
   },
 });
 

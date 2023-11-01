@@ -1,0 +1,33 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/ACaslonPro-Bold.otf",
+      "sha1": "d8a09bae54086670f3158ad18f1f18c3d886b2c1"
+    },
+    {
+      "path": "assets/fonts/ACaslonPro-BoldItalic.otf",
+      "sha1": "ed6e0ec9d93f0c832aead9e833733e3444ad4c7a"
+    },
+    {
+      "path": "assets/fonts/ACaslonPro-Italic.otf",
+      "sha1": "ee9ed610e821e0dadb99ea3c0062cbbb7fb87645"
+    },
+    {
+      "path": "assets/fonts/ACaslonPro-Regular.otf",
+      "sha1": "a6daf717756ea2fe0297a68ba78454d1ebd1ddb5"
+    },
+    {
+      "path": "assets/fonts/ACaslonPro-Semibold.otf",
+      "sha1": "482202e5b183247d91f146a5435690f794148120"
+    },
+    {
+      "path": "assets/fonts/ACaslonPro-SemiboldItalic.otf",
+      "sha1": "e966efd97559d0efb7c8cbca767631b54e403e49"
+    },
+    {
+      "path": "assets/fonts/NY Irvin.ttf",
+      "sha1": "8e3dbb0d2593ce045ad258d03406f859df74fbf7"
+    }
+  ]
+}
