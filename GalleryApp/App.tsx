@@ -1,11 +1,4 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -25,12 +18,25 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import { firebase } from '@react-native-firebase/app';
+import analytics from '@react-native-firebase/analytics';
+
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
 
 function Section({children, title}: SectionProps): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
+
+  useEffect(() => {
+    analytics().logEvent('page_view', {
+        screen_name: 'home_screen',
+        screen_class: 'HomeScreen',
+      })
+      .then(() => console.log('Page view event logged'))
+      .catch(error => console.error('Error logging the page view event', error));
+  }, []);
+
   return (
     <View style={styles.sectionContainer}>
       <Text
