@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1089287370145",
+    "project_id": "art-gallery-app-f773a",
+    "storage_bucket": "art-gallery-app-f773a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1089287370145:android:4cc76396745e3b26d307e0",
+        "android_client_info": {
+          "package_name": "com.galleryapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsTgscjwtakppl83kULgefy9B9ZVV32_I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
