@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -20,6 +20,11 @@ import {
 
 import { firebase } from '@react-native-firebase/app';
 import analytics from '@react-native-firebase/analytics';
+import {getFirestore} from 'firebase/firestore';
+
+const firebaseConfig = {
+
+}
 
 type SectionProps = PropsWithChildren<{
   title: string;
