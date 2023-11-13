@@ -1,6 +1,7 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import type {PropsWithChildren} from 'react';
 import {
+  Image,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -18,13 +19,8 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { firebase } from '@react-native-firebase/app';
 import analytics from '@react-native-firebase/analytics';
-import {getFirestore} from 'firebase/firestore';
-
-const firebaseConfig = {
-
-}
+import storage from '@react-native-firebase/storage';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -69,6 +65,22 @@ function Section({children, title}: SectionProps): JSX.Element {
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    // define refernce to storage
+    const storageRef = storage().ref('Arthur Vallin/arthur vallin.png');
+
+    // fetch url and update state
+    storageRef.getDownloadURL()
+      .then((url) => {
+        setImageUrl(url);
+      })
+      .catch((error) => {
+        console.error('Error fetching image URL: ', error);
+      });
+  }, []);
+
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
@@ -102,6 +114,10 @@ function App(): JSX.Element {
           </Section>
           <LearnMoreLinks />
         </View>
+        <Image
+          source={{uri:imageUrl}}
+          style={{width: 200, height: 200}}
+        />
       </ScrollView>
     </SafeAreaView>
   );
