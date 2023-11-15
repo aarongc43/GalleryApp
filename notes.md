@@ -1,5 +1,11 @@
 # Notes
 
+## Colors
+
+Background: #3F334D
+Accent: #574B60
+Text: #F7F5FB
+
 ## Installing React Native
 
 1. npx react-native@latest init GalleryApp
