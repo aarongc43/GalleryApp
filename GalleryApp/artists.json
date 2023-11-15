@@ -1,0 +1,34 @@
+{
+  "artists": [
+    {
+      "name": "Arthur Vallin",
+      "exhibition name": "Chubby",
+      "bio": "/Arthur Vallin/bio.txt",
+      "location": "Odessa",
+      "pieces": [
+        {
+          {
+            "piece1": "/Arthur Vallin/Chubby/piece1.jpg"
+            "piece1 description": "/Arthur Vallin/Chubby/piece1.txt"
+          },
+          {
+            "piece2": "/Arthur Vallin/Chubby/piece2.jpg"
+            "piece2 description": "/Arthur Vallin/Chubby/piece2.txt"
+          },
+          {
+            "piece3": "/Arthur Vallin/Chubby/piece3.jpg"
+            "piece3 description": "/Arthur Vallin/Chubby/piece3.txt"
+          },
+          {
+            "piece4": "/Arthur Vallin/Chubby/piece4.jpg"
+            "piece4 description": "/Arthur Vallin/Chubby/piece4.txt"
+          },
+          {
+            "piece5": "/Arthur Vallin/Chubby/piece5.jpg"
+            "piece5 description": "/Arthur Vallin/Chubby/piece5.txt"
+          },
+        }
+      ]
+    }
+  ]
+}
