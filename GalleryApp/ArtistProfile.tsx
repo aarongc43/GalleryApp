@@ -17,8 +17,10 @@ interface Artist {
   }[];
 }
 
+// Path to JSON file so that we can reference it quickly
 const ARTISTS_JSON_PATH = 'gs://art-gallery-app-f773a.appspot.com/artist.json';
 
+// function to be used for calling the artists flatlist profile
 export const fetchArtistFlatlistProfile = async (artistName: string) => {
   // fetch JSON object for artistst
   const artistsJsonUrl = await storage()
@@ -29,7 +31,9 @@ export const fetchArtistFlatlistProfile = async (artistName: string) => {
   const response = await fetch(artistsJsonUrl);
   const artistsData = await response.json();
 
-  // find artists data
+  // function to find artists name for the data it needs to return.
+  // TODO: needs to be its own function because it is going to be used several
+  // times
   const artistData = artistsData.artists.find((artist: Artist) => {
     return artist.name === artistName;
   });
@@ -39,7 +43,7 @@ export const fetchArtistFlatlistProfile = async (artistName: string) => {
 
   // fetch URLs for artist data from firebase
   const exhibitionImage = await storage()
-    .ref('${artistData.pieces[0].imageName}')
+    .ref(`${artistData.pieces[0].imageName}`)
     .getDownloadURL();
 
   return {
