@@ -41,7 +41,8 @@ export const fetchArtistFlatlistProfile = async (artistName: string) => {
     throw new Error(`Artists ${artistName} not found`);
   }
 
-  // fetch URLs for artist data from firebase
+  // getting the image from the artist for the flatlist
+  // gets the first image of the json array
   const exhibitionImage = await storage()
     .ref(`${artistData.pieces[0].imageName}`)
     .getDownloadURL();
