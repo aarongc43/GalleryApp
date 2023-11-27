@@ -3,30 +3,187 @@
     {
       "name": "Arthur Vallin",
       "exhibition name": "Chubby",
-      "bio": "/Arthur Vallin/bio.txt",
+      "bio": "/Arthur Vallin/arthurvallin.txt",
       "location": "Odessa",
+      "profilePhoto": "/Arthur Vallin/arthur vallin.png",
       "pieces": [
         {
-          {
-            "piece1": "/Arthur Vallin/Chubby/piece1.jpg"
-            "piece1 description": "/Arthur Vallin/Chubby/piece1.txt"
-          },
-          {
-            "piece2": "/Arthur Vallin/Chubby/piece2.jpg"
-            "piece2 description": "/Arthur Vallin/Chubby/piece2.txt"
-          },
-          {
-            "piece3": "/Arthur Vallin/Chubby/piece3.jpg"
-            "piece3 description": "/Arthur Vallin/Chubby/piece3.txt"
-          },
-          {
-            "piece4": "/Arthur Vallin/Chubby/piece4.jpg"
-            "piece4 description": "/Arthur Vallin/Chubby/piece4.txt"
-          },
-          {
-            "piece5": "/Arthur Vallin/Chubby/piece5.jpg"
-            "piece5 description": "/Arthur Vallin/Chubby/piece5.txt"
-          },
+          "piece1": "/Arthur Vallin/Chubby/piece1.jpg",
+          "piece1 description": "/Arthur Vallin/Chubby/piece1.txt"
+        },
+        {
+          "piece2": "/Arthur Vallin/Chubby/piece2.jpg",
+          "piece2 description": "/Arthur Vallin/Chubby/piece2.txt"
+        },
+        {
+          "piece3": "/Arthur Vallin/Chubby/piece3.jpg",
+          "piece3 description": "/Arthur Vallin/Chubby/piece3.txt"
+        },
+        {
+          "piece4": "/Arthur Vallin/Chubby/piece4.jpg",
+          "piece4 description": "/Arthur Vallin/Chubby/piece4.txt"
+        },
+        {
+          "piece5": "/Arthur Vallin/Chubby/piece5.jpg",
+          "piece5 description": "/Arthur Vallin/Chubby/piece5.txt"
+        }
+      ]
+    },
+    {
+      "name": "Haley Josephs",
+      "exhibition name": "haleyjosephs",
+      "bio": "Haley Josephs/haleyjosephs.txt",
+      "location": "Odessa",
+      "profilePhoto": "/Haley Josephs/haleyjosephs.png",
+      "pieces": [
+        { "piece1": "/Haley Josephs/haleyjosephs/piece1.png",
+          "piece1 description": "/Haley Josephs/haleyjosephs/piece1.txt"
+        },
+        {
+          "piece2": "/Haley Josephs/haleyjosephs/piece2.jpg",
+          "piece2 description": "/Haley Josephs/haleyjosephs/piece2.txt"
+        },
+        {
+          "piece3": "/Haley Josephs/haleyjosephs/piece3.jpg",
+          "piece3 description": "/Haley Josephs/haleyjosephs/piece3.txt"
+        },
+        {
+          "piece4": "/Haley Josephs/haleyjosephs/piece4.jpg",
+          "piece4 description": "/Haley Josephs/haleyjosephs/piece4.txt"
+        },
+        {
+          "piece5": "/Haley Josephs/haleyjosephs/piece5.jpg",
+          "piece5 description": "/Haley Josephs/haleyjosephs/piece5.txt"
+        }
+      ]
+    },
+    {
+      "name": "Tafy LaPlanche",
+      "exhibition name": "NUM",
+      "bio": "/Tafy LaPlanche/tafylaplanche.txt",
+      "location": "Odessa",
+      "profilePhoto": "/Tafy LaPlanche/tafylaplanche.png",
+      "pieces": [
+        { "piece1": "/Tafy LaPlanche/NUM/piece1.png",
+          "piece1 description": "/Tafy LaPlanche/NUM/piece1.txt"
+        },
+        {
+          "piece2": "/Tafy LaPlanche/NUM/piece2.png",
+          "piece2 description": "/Tafy LaPlanche/NUM/piece2.txt"
+        },
+        {
+          "piece3": "/Tafy LaPlanche/NUM/piece3.png",
+          "piece3 description": "/Tafy LaPlanche/NUM/piece3.txt"
+        },
+        {
+          "piece4": "/Tafy LaPlanche/NUM/piece4.png",
+          "piece4 description": "/Tafy LaPlanche/NUM/piece4.txt"
+        },
+        {
+          "piece5": "/Tafy LaPlanche/NUM/piece5.png",
+          "piece5 description": "/Tafy LaPlanche/NUM/piece5.txt"
+        }
+      ]
+    },
+    {
+      "name": "Yucca Stuff",
+      "exhibition name": "yuccastuff",
+      "bio": "/Yucca Stuff/yuccastuff.txt",
+      "location": "Odessa",
+      "profilePhoto": "/Yucca Stuff/danielmorrison.png",
+      "pieces": [
+        { "piece1": "/Yucca Stuff/yuccastuff/piece1.png",
+          "piece1 description": "/Yucca Stuff/yuccastuff/piece1.txt"
+        },
+        {
+          "piece2": "/Yucca Stuff/yuccastuff/piece2.png",
+          "piece2 description": "/Yucca Stuff/yuccastuff/piece2.txt"
+        },
+        {
+          "piece3": "/Yucca Stuff/yuccastuff/piece3.png",
+          "piece3 description": "/Yucca Stuff/yuccastuff/piece3.txt"
+        },
+        {
+          "piece4": "/Yucca Stuff/yuccastuff/piece4.png",
+          "piece4 description": "/Yucca Stuff/yuccastuff/piece4.txt"
+        },
+        {
+          "piece5": "/Yucca Stuff/yuccastuff/piece5.png",
+          "piece5 description": "/Yucca Stuff/yuccastuff/piece5.txt"
+        }
+      ]
+    },
+    {
+      "name": "Yang Seung Jin",
+      "bio": "/Yang Seung Jin/yangseungjin.txt",
+      "location": "Odessa",
+      "profilePhoto": "/Yang Seung Jin/yangseungjin.png",
+      "exhibitions": [
+        {
+          "exhibition name": "D",
+          "pieces": [
+            { "piece1": "/Yang Seung Jin/Exhibitions/D/piece1.jpg"
+            },
+            {
+              "piece2": "/Yang Seung Jin/Exhibitions/D/piece2.jpg"
+            },
+            {
+              "piece3": "/Yang Seung Jin/Exhibitions/D/piece3.jpg"
+            },
+            {
+              "piece4": "/Yang Seung Jin/Exhibitions/D/piece4.jpg"
+            },
+            {
+              "piece5": "/Yang Seung Jin/Exhibitions/D/piece5.jpg"
+            }
+          ]
+        },
+        {
+          "exhibition name": "Dior",
+          "pieces": [
+            { "piece1": "/Yang Seung Jin/Exhibitions/Dior/piece1.jpeg"
+            },
+            {
+              "piece2": "/Yang Seung Jin/Exhibitions/Dior/piece2.jpeg"
+            },
+            {
+              "piece3": "/Yang Seung Jin/Exhibitions/Dior/piece3.jpeg"
+            },
+            {
+              "piece4": "/Yang Seung Jin/Exhibitions/Dior/piece4.jpeg"
+            },
+            {
+              "piece5": "/Yang Seung Jin/Exhibitions/Dior/piece5.jpeg"
+            },
+            {
+              "piece6": "/Yang Seung Jin/Exhibitions/Dior/piece5.jpeg"
+            },
+            {
+              "piece7": "/Yang Seung Jin/Exhibitions/Dior/piece5.jpeg"
+            },
+            {
+              "piece8": "/Yang Seung Jin/Exhibitions/Dior/piece5.jpeg"
+            }
+          ]
+        },
+        {
+          "exhibition name": "La Solo",
+          "pieces": [
+            { "piece1": "/Yang Seung Jin/Exhibitions/La Solo/piece1.png"
+            },
+            {
+              "piece2": "/Yang Seung Jin/Exhibitions/La Solo/piece2.png"
+            },
+            {
+              "piece3": "/Yang Seung Jin/Exhibitions/La Solo/piece3.png"
+            },
+            {
+              "piece4": "/Yang Seung Jin/Exhibitions/La Solo/piece4.png"
+            },
+            {
+              "piece5": "/Yang Seung Jin/Exhibitions/La Solo/piece5.png"
+            }
+          ]
         }
       ]
     }
