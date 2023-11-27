@@ -8,13 +8,26 @@ import storage from '@react-native-firebase/storage';
   4. exhibition name 'exibitionName'
 */
 
+interface ArtistPiece {
+  imageName: string;
+}
+
 interface Artist {
   name: string;
   'exhibition name': string;
   location: string;
-  pieces: {
-    imageName: string;
-  }[];
+  pieces: ArtistPiece[];
+}
+
+interface ArtistFlatlistProfile {
+  exhibitionImage: string;
+  artistName: string;
+  artistExhibitName: string;
+  exhibitionLocation: string;
+}
+
+interface ArtistsData {
+  artists: Artist[];
 }
 
 // Path to JSON file so that we can reference it quickly
@@ -29,26 +42,23 @@ export const fetchArtistFlatlistProfile = async (artistName: string) => {
 
   // fetch JSON contents from the URL
   const response = await fetch(artistsJsonUrl);
-  const artistsData = await response.json();
+  const artistsData: ArtistsData = await response.json();
 
-  // function to find artists name for the data it needs to return.
-  // TODO: needs to be its own function because it is going to be used several
-  // times
-  const artistData = artistsData.artists.find((artist: Artist) => {
-    return artist.name === artistName;
-  });
+  // Find the artist by name
+  const artistData = artistsData.artists.find((artist: Artist) => artist.name === artistName);
   if (!artistData) {
-    throw new Error(`Artists ${artistName} not found`);
+    throw new Error(`Artist ${artistName} not found`);
   }
 
-  // getting the image from the artist for the flatlist
-  // gets the first image of the json array
+  // Get the first image of the artist for the FlatList
   const exhibitionImage = await storage()
-    .ref(`${artistData.pieces[0].imageName}`)
+    .ref(artistData.pieces[0].imageName)
     .getDownloadURL();
+  // getting the image from the artist for the flatlist
 
   return {
     exhibitionImage,
+    artistName: artistData.name,
     artistExhibitName: artistData['exhibition name'],
     exhibitionLocation: artistData.location,
   };

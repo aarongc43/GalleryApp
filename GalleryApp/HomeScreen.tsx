@@ -1,7 +1,7 @@
 import React, {useRef, useEffect, useState} from 'react';
 import MenuScreen from './MenuScreen';
 import Exhibitions from './Exhibitions';
-import Artists from './Artists';
+import Artists from './ArtistProfile.tsx';
 import {
   SafeAreaView,
   ScrollView,
