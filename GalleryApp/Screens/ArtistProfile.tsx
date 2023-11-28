@@ -1,4 +1,5 @@
 import storage from '@react-native-firebase/storage';
+import artistsData from './artists.json';
 
 interface ArtistPiece {
   imageName: string;
@@ -21,8 +22,6 @@ interface ArtistsData {
   artists: Artist[];
 }
 
-// Path to JSON file so that we can reference it quickly
-const ARTISTS_JSON_PATH = './artist.json';
 const artistsCache: Record<string, Artist> = {};
 
 export const fetchArtistProfile = async (artistName: string): Promise<Artist> => {
@@ -30,10 +29,6 @@ export const fetchArtistProfile = async (artistName: string): Promise<Artist> =>
     if (artistsCache[artistName]) {
       return artistsCache[artistName];
     }
-
-    const artistsJsonUrl = await storage().ref(ARTISTS_JSON_PATH).getDownloadURL();
-    const response = await fetch(artistsJsonUrl);
-    const artistsData: ArtistsData = await response.json();
 
     const artistData = artistsData.artists.find(artist => artist.name === artistName);
     if (!artistData) {

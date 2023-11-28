@@ -1,4 +1,8 @@
-import React, {useRef, useEffect, useState} from 'react';
+import React, { useRef, useEffect, useState } from 'react';
+import MenuScreen from './MenuScreen';
+import Exhibitions from './Exhibitions';
+import Artists from './Artists';
+import {fetchArtistProfile} from './ArtistProfile';
 import {
   SafeAreaView,
   ScrollView,
@@ -11,51 +15,184 @@ import {
   FlatList,
 } from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
-import MenuScreen from './MenuScreen';
-import Exhibitions from './Exhibitions';
-import Artists from './Artists';
-import {fetchArtistFlatlistProfile} from '.ArtistProfile';
-import {styles} from '/HomeScreenStyles';
+import storage from '@react-native-firebase/storage';
 
-const imageList = [
-  // Add your image URIs here
-  'https://fineartshippers.com/wp-content/uploads/2022/03/Modern_art_wall_splashed_handyman_dripped_free-form_painting.jpg',
-  'https://around.uoregon.edu/sites/default/files/styles/landscape_xl/public/field/image/the_fallen.jpg?itok=2zDwlmO8',
-  'https://vancouverfineartgallery.com/wp-content/uploads/2019/07/Valeri-Sokolovski-Vancouver-Jazz-Oil-on-Canvas-24x36-in.jpg',
-  'https://i2.wp.com/www.differencebetween.com/wp-content/uploads/2011/02/Modern-Art.jpg?resize=550%2C411&ssl=1',
-  'https://indianartideas.in/articleimages/1615468884Freedom.jpg',
-];
+interface ArtistFlatlistItem {
+  exhibitionImage: string;
+  artistName: string;
+  artistExhibitName: string;
+  exhibitionLocation: string;
+}
 
-const Carousel = ({ images, width, scrollViewRef, activeIndex, setActiveIndex }) => {
-  const handleScroll = (event) => {
-    const contentOffset = event.nativeEvent.contentOffset.x;
-    const newIndex = Math.round(contentOffset / width);
-    setActiveIndex(newIndex);
-  };
-
-  return (
-          <FlatList
-            horizontal
-            pagingEnabled
-            data={imageList}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={({ item, index }) => (
-              <Image
-                key={index}
-                source={{uri: item}}
-                style={{ width, height: 350 }}
-              />
-            )}
-            showsHorizontalScrollIndicator={false}
-            onMomentumScrollEnd={handleScroll}
-            ref={scrollViewRef}
-            contentContainerStyle={styles.flatListContainer}
-          />
-  );
+const textRegular = {
+  fontSize: 24,
+  fontFamily: 'ACaslonPro-Regular',
 };
 
-const HomeScreen = ({navigation}) => {
-  const { width } = Dimensions.get('window');
+const textBoldItalic = {
+  fontSize: 24,
+  fontFamily: 'ACaslonPro-BoldItalic',
+};
+
+const textBold = {
+  fontSize: 24,
+  fontFamily: 'ACaslonPro-Bold',
+};
+
+const textItalic = {
+  fontSize: 24,
+  fontFamily: 'ACaslonPro-Italic',
+};
+
+const textNY = {
+  fontSize: 24,
+  fontFamily: 'NY Irvin',
+};
+
+const styles = StyleSheet.create({
+  itemContainer: {
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 20, // Add vertical padding
+    paddingHorizontal: 16, // Add horizontal padding for screen edge spacing
+    backgroundColor: '#fff',
+  },
+  imageStyle: {
+    width: '100%',
+    height: 300,
+    resizeMode: 'cover',
+    borderRadius: 10,
+  },
+  artistName: {
+    ...textBold,
+    color: '#333',
+    marginTop: 20,
+  },
+  location: {
+    ...textRegular,
+    color: '#666',
+    marginTop: 4,
+  },
+  container: {
+    flex: 1,
+    backgroundColor: '#a9a9a9',
+  },
+  textContainer: {
+    width: '100%',
+    alignItems: 'flex-start',
+    paddingHorizontal: 16,
+    paddingTop: 16,
+  },
+  textInfoContainer: {
+    alignItems: 'center', // Center the text horizontally
+    marginTop: 12, // Space between image and text
+  },
+  exhibitionName: {
+    color: '#555', // Choose a color that fits your design
+    ...textBoldItalic,
+    marginTop: 4, // Space between the artist's name and exhibition name
+  },
+  Menu_txt: {
+    marginLeft: 300,
+    marginTop: -15,
+    height: 30,
+    width: 52,
+    fontFamily: 'ACaslonPro-Bold',
+    fontSize: 20,
+    textAlign: 'right',
+    color: '#333',
+  },
+  pressedText: {
+    color: 'white', // Change the color for the pressed state
+  },
+  horizontalLine: {
+    marginBottom: 10,
+    width: 350,
+    borderBottomColor: '#D9D9D9', // Color of the line
+    borderBottomWidth: 1, // Thickness of the line
+  },
+  Mellifloo_txt: {
+    ...textNY,
+    fontSize: 40,
+    color: 'black',
+  },
+  txt: {
+    marginTop: -200,
+    marginLeft: -170,
+    fontFamily: 'ACaslonPro-Bold',
+    fontSize: 25,
+    color: 'black',
+  },
+  imageScrollView: {
+    width: 392,
+    height: 200, // Set the height as needed
+  },
+  indicatorContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute', // Position the indicators over the FlatList
+    bottom: 20, // Bottom of the screen
+    alignSelf: 'center',
+  },
+  flatListContainer: {
+    flexDirection: 'row',
+  },
+  indicator: {
+    width: 80,
+    height: 4,
+    borderRadius: 6,
+    backgroundColor: '#D9D9D9',
+    marginHorizontal: 5,
+    opacity: 0.8,
+  },
+  activeIndicator: {
+    height: 4,
+    width: 80,
+    borderRadius: 6,
+    backgroundColor: '#7E7E7E',
+    opacity: 1,
+  },
+  articleContainer: {
+    width: '100%',
+    backgroundColor: '#fff',
+    borderBottomWidth: 1,
+    borderBottomColor: '#eaeaea',
+    paddingVertical: 20,
+    paddingHorizontal: 16,
+  },
+  articleImage: {
+    width: '100%',
+    height: 200,
+    resizeMode: 'cover',
+    borderRadius: 10,
+  },
+  articleTextContainer: {
+    marginTop: 10,
+  },
+  articleArtistName: {
+    ...textBold,
+    fontSize: 18,
+  },
+  articleExhibitionName: {
+    ...textItalic,
+    fontSize: 16,
+  },
+  articleLocation: {
+    ...textRegular,
+    fontSize: 16,
+  },
+});
+
+const getRandomArtPieces = (artistsData) => {
+  // This should return a random selection of art pieces from your data
+};
+
+function HomeScreen({navigation}) {
+  const [artistProfiles, setArtistProfiles] = useState([]);
+  const artistNames = ['Haley Josephs', 'Yucca Stuff', 'Arthur Vallin'];
+  const {width} = Dimensions.get('window');
   const scrollViewRef = useRef();
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -65,149 +202,147 @@ const HomeScreen = ({navigation}) => {
     setActiveIndex(newIndex);
   };
 
+  const ArticleItem = ({ art, artist, location }) => (
+    <View style={styles.articleContainer}>
+      <Image source={{ uri: art.imageUrl }} style={styles.articleImage} />
+      <View style={styles.articleTextContainer}>
+        <Text style={styles.articleArtistName}>{artist.name}</Text>
+        <Text style={styles.articleExhibitionName}>{art.exhibitionName}</Text>
+        <Text style={styles.articleLocation}>{location}</Text>
+      </View>
+    </View>
+  );
+
+
+  useEffect(() => {
+    const fetchProfiles = async () => {
+      const profiles = await Promise.all(
+        artistNames.map(async (name) => {
+          try {
+            const profile = await fetchArtistProfile(name);
+            const exhibition = profile.exhibitions[0];
+            const exhibitionImage = exhibition?.pieces[0]?.imageName;
+            const imageUrl = exhibitionImage ? await storage().ref(exhibitionImage).getDownloadURL() : null;
+            console.log(`Image URL for ${name}: ${imageUrl}`);
+            return {
+              exhibitionImage: imageUrl,
+              artistName: profile.name,
+              artistExhibitName: exhibition['exhibition name'],
+              exhibitionLocation: profile.location,
+            };
+          } catch (error) {
+            console.error('Error fetching artist profile:', error);
+            return null;
+          }
+        })
+      );
+      setArtistProfiles(profiles.filter((profile) => profile !== null));
+    };
+
+    fetchProfiles();
+  }, []);
+
   useEffect(() => {
     const autoScroll = setInterval(() => {
       if (scrollViewRef.current) {
-        if (activeIndex === imageList.length - 1) {
-          scrollViewRef.current.scrollToOffset({
-            offset: 0,
-            animated: true,
-          });
-          setActiveIndex(0);
-        } else {
-          const nextIndex = activeIndex + 1;
-          scrollViewRef.current.scrollToOffset({
-            offset: nextIndex * width,
-            animated: true,
-          });
-          setActiveIndex(nextIndex);
-        }
+        const nextIndex = activeIndex === artistProfiles.length - 1 ? 0 : activeIndex + 1;
+        scrollViewRef.current.scrollToOffset({ offset: nextIndex * width, animated: true });
+        setActiveIndex(nextIndex);
       }
-    }, 3000);
-    return () => {clearInterval(autoScroll);
-  }, [activeIndex, imageList, width]);
+    }, 3000); // Rotate every 3 seconds
 
-  return (
-      <SafeAreaView>
-        <ScrollView>
-          <View style={styles.container}>
-            <View style={styles.textContainer}>
-              <TouchableOpacity onPress={() => navigation.navigate('Menu')}>
-                <Text style={styles.Menu_txt}>Menu</Text>
-              </TouchableOpacity>
-              <View style={styles.horizontalLine}></View>
-              <Text style={styles.Mellifloo_txt}>MELLIFLOO</Text>
-            </View>
-            <View style={styles.indicatorContainer}>
-              {imageList.map((_, index) => (
-                <TouchableOpacity
-                  key={index}
-                  style={[
-                    styles.indicator,
-                    index === activeIndex && styles.activeIndicator,
-                  ]}
-                  onPress={() => {
-                    scrollViewRef.current.scrollToOffset({
-                      offset: index * width,
-                      animated: true,
-                    });
-                    setActiveIndex(index);
-                  }}
-                />
-              ))}
-            </View>
-            <View style={styles.textContainer}>
-              <Text style={styles.txt}>On View</Text>
-            </View>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    );
+    return () => clearInterval(autoScroll);
+  }, [activeIndex, artistProfiles.length, width]);
+
+  const renderItem = ({item}) => (
+    <View style={[styles.itemContainer, {width}]}>
+      <Image source={{uri: item.exhibitionImage}} style={styles.imageStyle} />
+      <View style={styles.textInfoContainer}>
+        <Text style={styles.artistName}>{item.artistName}</Text>
+        <Text style={styles.exhibitionName}>{item.artistExhibitName}</Text>
+        <Text style={styles.location}>{item.exhibitionLocation}</Text>
+      </View>
+    </View>
+  );
+
+  const renderArticles = () => {
+    // Assuming you have a function to get a random set of art pieces
+    const randomArtPieces = getRandomArtPieces(); // Implement this function based on your data structure
+
+    return randomArtPieces.map((art, index) => (
+      <ArticleItem
+        key={index}
+        art={art}
+        artist={art.artist}
+        location={art.location}
+      />
+    ));
   };
 
-  const Stack = createStackNavigator();
+  return (
+    <SafeAreaView>
+      <ScrollView>
+        <View style={styles.container}>
+          <View style={styles.textContainer}>
+            <TouchableOpacity onPress={() => navigation.navigate('Menu')}>
+              <Text style={styles.Menu_txt}>Menu</Text>
+            </TouchableOpacity>
+            <View style={styles.horizontalLine}></View>
+            <Text style={styles.Mellifloo_txt}>MELLIFLOO</Text>
+          </View>
+          <FlatList
+            horizontal
+            pagingEnabled
+            data={artistProfiles}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={renderItem}
+            showsHorizontalScrollIndicator={false}
+            onMomentumScrollEnd={handleScroll}
+            ref={scrollViewRef}
+            contentContainerStyle={styles.flatListContainer}
+          />
+          <View style={styles.indicatorContainer}>
+            {artistProfiles.map((_, index) => (
+              <TouchableOpacity
+                key={index}
+                style={[
+                  styles.indicator,
+                  index === activeIndex && styles.activeIndicator,
+                ]}
+                onPress={() => {
+                  scrollViewRef.current.scrollToOffset({
+                    offset: index * width,
+                    animated: true,
+                  });
+                  setActiveIndex(index);
+                }}
+              />
+            ))}
+          </View>
+          <View style={styles.textContainer}>
+            <Text style={styles.txt}>On View</Text>
+          </View>
+          {renderArticles()}
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
 
-   const HomeMenuScreen = () => {
-      <Stack.Navigator
-        initialRouteName="Home"
-        screenOptions={{
-          headerShown: false, // You can hide the header if needed
-          animationEnabled: false, // Disable animation
-        }}>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Menu" component={MenuScreen} />
-        <Stack.Screen name="Exhibitions" component={Exhibitions} />
-        <Stack.Screen name="Artists" component={Artists} />
-      </Stack.Navigator>
-  }
+const Stack = createStackNavigator();
 
-  export default HomeMenuScreen;
-
-  const styles = StyleSheet.create({ container: { flex: 1, justifyContent: 'center', alignItems: 'center', flexDirection: 'column',
-    backgroundColor: '#a9a9a9',
-    height: 800,
-    padding: 20,
-  },
-    textContainer: {
-      flex: 1,
-      justifyContent: 'flex-start',
-      alignItems: 'flex-start',
-    },
-    Menu_txt: {
-      marginLeft: 300,
-      marginTop: -15,
-      height: 30,
-      width: 52,
-      fontFamily: 'ACaslonPro-Bold',
-      fontSize: 20,
-      textAlign: 'right',
-      color: '#7E7E7E',
-    },
-    pressedText: {
-      color: 'white', // Change the color for the pressed state
-    },
-    horizontalLine: {
-      marginBottom: 10,
-      width: 350,
-      borderBottomColor: '#D9D9D9', // Color of the line
-      borderBottomWidth: 1, // Thickness of the line
-    },
-    Mellifloo_txt: {
-      fontFamily: 'ACaslonPro-BoldItalic',
-      fontSize: 40,
-      color: 'black',
-    },
-    txt: {
-      marginTop: -200,
-      marginLeft: -170,
-      fontFamily: 'ACaslonPro-Bold',
-      fontSize: 25,
-      color: 'black',
-    },
-    imageScrollView: {
-      width: 392,
-      height: 200, // Set the height as needed
-    },
-    indicatorContainer: {
-      marginTop: 185,
-      flexDirection: 'row',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    flatListContainer: {
-      flexDirection: 'row',
-    },
-    indicator: {
-      marginTop: -450,
-      marginRight: 5,
-      width: 58,
-      height: 2,
-      borderRadius: 2,
-      backgroundColor: '#D9D9D9',
-      margin: 8,
-    },
-    activeIndicator: {
-      height: 8,
-      backgroundColor: '#7E7E7E', // Change the color for the active indicator
-    },
-  });
+export default function HomeMenuScreen() {
+  return (
+    <Stack.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        headerShown: false, // You can hide the header if needed
+        animationEnabled: false, // Disable animation
+      }}>
+      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Menu" component={MenuScreen} />
+      <Stack.Screen name="Exhibitions" component={Exhibitions} />
+      <Stack.Screen name="Artists" component={Artists} />
+    </Stack.Navigator>
+  );
+}
