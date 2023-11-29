@@ -1,5 +1,8 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, {useRef, useEffect, useState} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {NativeSyntheticEvent, NativeScrollEvent} from 'react-native';
+
 import storage from '@react-native-firebase/storage';
 import {
   SafeAreaView,
@@ -18,37 +21,20 @@ import Artists from './Artists';
 import {fetchArtistProfile} from './ArtistProfile';
 import styles from '../styles/HomeScreenStyles';
 
-const ArticleItem: React.FC<ArticleItemProps> = ({art, artist, location}) => (
-  <View style={styles.articleContainer}>
-    <Image source={{uri: art.imageUrl}} style={styles.articleImage} />
-    <View style={styles.articleTextContainer}>
-      <Text style={styles.articleArtistName}>{artist.name}</Text>
-      <Text style={styles.articleExhibitionName}>{art.exhibitionName}</Text>
-      <Text style={styles.articleLocation}>{location}</Text>
-    </View>
-  </View>
-);
-
-const Article = ({artistName, artwork, exhibitionName, location}) => {
-  return (
-    <View style={styles.articleContainer}>
-      <Image style={styles.articleImage} source={{ uri: artwork }} />
-      <Text style={styles.artistName}>{artistName}</Text>
-      <Text style={styles.exhibitionName}>{exhibitionName}</Text>
-      <Text style={styles.location}>{location}</Text>
-    </View>
-  );
+type HomeScreenProps = {
+  navigation: StackNavigationProp<any>;
 };
 
-function HomeScreen({navigation}) {
+function HomeScreen({navigation}: HomeScreenProps) {
   const [artistProfiles, setArtistProfiles] = useState([]);
   const artistNames = ['Haley Josephs', 'Yucca Stuff', 'Arthur Vallin'];
+  const artistArticles = ['Haley Josephs', 'Tafy LaPlanche', 'Yang Seung Jin'];
   const {width} = Dimensions.get('window');
   const scrollViewRef = useRef();
   const [activeIndex, setActiveIndex] = useState(0);
   const [articles, setArticles] = useState([]);
 
-  const handleScroll = (event) => {
+  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const contentOffset = event.nativeEvent.contentOffset.x;
     const newIndex = Math.round(contentOffset / width);
     setActiveIndex(newIndex);
@@ -57,7 +43,7 @@ function HomeScreen({navigation}) {
   useEffect(() => {
     const fetchProfiles = async () => {
       const profiles = await Promise.all(
-        artistNames.map(async (name) => {
+        artistNames.map(async name => {
           try {
             const profile = await fetchArtistProfile(name);
             const exhibition = profile.exhibitions[0];
@@ -83,19 +69,34 @@ function HomeScreen({navigation}) {
   }, []);
 
   useEffect(() => {
-    const articlesData = artistProfiles.map((profile) => {
-      // Choose a random piece from the first exhibition for simplicity
-      const randomPieceIndex = Math.floor(Math.random() * profile.exhibitions[0].pieces.length);
-      const piece = profile.exhibitions[0].pieces[randomPieceIndex];
-      return {
-        artistName: profile.artistName,
-        artwork: piece.imageName,
-        exhibitionName: profile.exhibitions[0]['exhibition name'],
-        location: profile.exhibitionLocation,
-      };
-    });
-    setArticles(articlesData);
-  }, [artistProfiles]);
+    const fetchArticles = async () => {
+      const fetchedArticles = await Promise.all(
+        artistArticles.map(async artistName => {
+          try {
+            const artistProfile = await fetchArtistProfile(artistName);
+            const randomExhibitionIndex = Math.floor(Math.random() * artistProfile.exhibitions.length);
+            const exhibition = artistProfile.exhibitions[randomExhibitionIndex];
+            const randomPieceIndex = Math.floor(Math.random() * exhibition.pieces.length);
+            const piece = exhibition.pieces[randomPieceIndex];
+            const imageUrl = await storage().ref(piece.imageName).getDownloadURL();
+
+            console.log(`Exhibition Name for ${artistName}:`, exhibition['exhibition name']);
+            return {
+              articleImage: imageUrl,
+              articleName: artistProfile.name,
+              articleExhibitionName: exhibition['exhibitionName'],
+            };
+          } catch (error) {
+            console.error('Error fetching article:', error);
+            return null;
+          }
+        })
+      );
+      setArticles(fetchedArticles.filter(article => article !== null));
+    };
+
+    fetchArticles();
+  }, []);
 
   useEffect(() => {
     const autoScroll = setInterval(() => {
@@ -110,45 +111,21 @@ function HomeScreen({navigation}) {
   }, [activeIndex, artistProfiles.length, width]);
 
   const renderItem = ({item}) => (
-    <View style={[styles.itemContainer, {width}]}>
-      <Image source={{uri: item.exhibitionImage}} style={styles.imageStyle} />
-      <View style={styles.textInfoContainer}>
-        <Text style={styles.artistName}>{item.artistName}</Text>
-        <Text style={styles.exhibitionName}>{item.artistExhibitName}</Text>
-        <Text style={styles.location}>{item.exhibitionLocation}</Text>
+    <TouchableOpacity onPress={() => navigation.navigate('Artist', { artistName: item.artistName })}>
+      <View style={[styles.itemContainer, {width}]}>
+        <Image source={{uri: item.exhibitionImage}} style={styles.imageStyle} />
+        <View style={styles.textInfoContainer}>
+          <Text style={styles.artistName}>{item.artistName}</Text>
+          <Text style={styles.exhibitionName}>{item.artistExhibitName}</Text>
+          <Text style={styles.location}>{item.exhibitionLocation}</Text>
+        </View>
       </View>
-    </View>
-  );
-
-  const renderArticles = () => {
-    return artistProfiles.map(artist => {
-      // Randomly select one piece of artwork
-      const randomArtIndex = Math.floor(Math.random() * artist.exhibitions[0].pieces.length);
-      const artwork = artist.exhibitions[0].pieces[randomArtIndex];
-
-      return (
-        <ArticleItem
-          key={artist.name}
-          artistName={artist.name}
-          artwork={artwork.imageName} // Assuming this is a URL to the image
-          exhibitionName={artist.exhibitions[0]['exhibition name']}
-          location={artist.location}
-        />
-      );
-    });
-  };
-
-  const renderArticleItem = ({ item }) => (
-    <ArticleItem
-      art={item}
-      artist={{ name: item.artistName }}
-      location={item.location}
-    />
+    </TouchableOpacity>
   );
 
   return (
-    <SafeAreaView>
-      <ScrollView>
+    <SafeAreaView style={{flex: 1}}>
+      <ScrollView style={{flex: 1}}>
         <View style={styles.container}>
           <View style={styles.textContainer}>
             <TouchableOpacity onPress={() => navigation.navigate('Menu')}>
@@ -186,14 +163,22 @@ function HomeScreen({navigation}) {
               />
             ))}
           </View>
-          <View style={styles.textContainer}>
-            <Text style={styles.txt}>On View</Text>
-          </View>
-          <FlatList
-            data={articles}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={renderArticleItem}
-          />
+          {articles.length > 0 && (
+            <View style={{flex: 1}}>
+              {articles.map((article, index) => (
+                <TouchableOpacity key={index} onPress={() => navigation.navigate('Artist', { artistName: article.articleName })}>
+                  <View key={index} style={styles.articleContainer}>
+                    {/* Your article layout goes here */}
+                    <Image source={{ uri: article.articleImage }} style={styles.articleImage} />
+                    <View style={styles.articleTextContainer}>
+                      <Text style={styles.articleArtistName}>{article.articleName}</Text>
+                      <Text style={styles.articleExhibitionName}>{article.articleExhibitionName}</Text>
+                    </View>
+                  </View>
+                </TouchableOpacity>
+              ))}
+            </View>
+          )}
         </View>
       </ScrollView>
     </SafeAreaView>

@@ -18,10 +18,6 @@ interface Artist {
   exhibitions: Exhibition[];
 }
 
-interface ArtistsData {
-  artists: Artist[];
-}
-
 const artistsCache: Record<string, Artist> = {};
 
 export const fetchArtistProfile = async (artistName: string): Promise<Artist> => {
