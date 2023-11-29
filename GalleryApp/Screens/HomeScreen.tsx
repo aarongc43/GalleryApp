@@ -1,12 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
-import MenuScreen from './MenuScreen';
-import Exhibitions from './Exhibitions';
-import Artists from './Artists';
-import {fetchArtistProfile} from './ArtistProfile';
+import {createStackNavigator} from '@react-navigation/stack';
+import storage from '@react-native-firebase/storage';
 import {
   SafeAreaView,
   ScrollView,
-  StyleSheet,
   Text,
   TouchableOpacity,
   View,
@@ -14,179 +11,33 @@ import {
   Dimensions,
   FlatList,
 } from 'react-native';
-import {createStackNavigator} from '@react-navigation/stack';
-import storage from '@react-native-firebase/storage';
 
-interface ArtistFlatlistItem {
-  exhibitionImage: string;
-  artistName: string;
-  artistExhibitName: string;
-  exhibitionLocation: string;
-}
+import MenuScreen from './MenuScreen';
+import Exhibitions from './Exhibitions';
+import Artists from './Artists';
+import {fetchArtistProfile} from './ArtistProfile';
+import styles from '../styles/HomeScreenStyles';
 
-const textRegular = {
-  fontSize: 24,
-  fontFamily: 'ACaslonPro-Regular',
-};
+const ArticleItem: React.FC<ArticleItemProps> = ({art, artist, location}) => (
+  <View style={styles.articleContainer}>
+    <Image source={{uri: art.imageUrl}} style={styles.articleImage} />
+    <View style={styles.articleTextContainer}>
+      <Text style={styles.articleArtistName}>{artist.name}</Text>
+      <Text style={styles.articleExhibitionName}>{art.exhibitionName}</Text>
+      <Text style={styles.articleLocation}>{location}</Text>
+    </View>
+  </View>
+);
 
-const textBoldItalic = {
-  fontSize: 24,
-  fontFamily: 'ACaslonPro-BoldItalic',
-};
-
-const textBold = {
-  fontSize: 24,
-  fontFamily: 'ACaslonPro-Bold',
-};
-
-const textItalic = {
-  fontSize: 24,
-  fontFamily: 'ACaslonPro-Italic',
-};
-
-const textNY = {
-  fontSize: 24,
-  fontFamily: 'NY Irvin',
-};
-
-const styles = StyleSheet.create({
-  itemContainer: {
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 20, // Add vertical padding
-    paddingHorizontal: 16, // Add horizontal padding for screen edge spacing
-    backgroundColor: '#fff',
-  },
-  imageStyle: {
-    width: '100%',
-    height: 300,
-    resizeMode: 'cover',
-    borderRadius: 10,
-  },
-  artistName: {
-    ...textBold,
-    color: '#333',
-    marginTop: 20,
-  },
-  location: {
-    ...textRegular,
-    color: '#666',
-    marginTop: 4,
-  },
-  container: {
-    flex: 1,
-    backgroundColor: '#a9a9a9',
-  },
-  textContainer: {
-    width: '100%',
-    alignItems: 'flex-start',
-    paddingHorizontal: 16,
-    paddingTop: 16,
-  },
-  textInfoContainer: {
-    alignItems: 'center', // Center the text horizontally
-    marginTop: 12, // Space between image and text
-  },
-  exhibitionName: {
-    color: '#555', // Choose a color that fits your design
-    ...textBoldItalic,
-    marginTop: 4, // Space between the artist's name and exhibition name
-  },
-  Menu_txt: {
-    marginLeft: 300,
-    marginTop: -15,
-    height: 30,
-    width: 52,
-    fontFamily: 'ACaslonPro-Bold',
-    fontSize: 20,
-    textAlign: 'right',
-    color: '#333',
-  },
-  pressedText: {
-    color: 'white', // Change the color for the pressed state
-  },
-  horizontalLine: {
-    marginBottom: 10,
-    width: 350,
-    borderBottomColor: '#D9D9D9', // Color of the line
-    borderBottomWidth: 1, // Thickness of the line
-  },
-  Mellifloo_txt: {
-    ...textNY,
-    fontSize: 40,
-    color: 'black',
-  },
-  txt: {
-    marginTop: -200,
-    marginLeft: -170,
-    fontFamily: 'ACaslonPro-Bold',
-    fontSize: 25,
-    color: 'black',
-  },
-  imageScrollView: {
-    width: 392,
-    height: 200, // Set the height as needed
-  },
-  indicatorContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'absolute', // Position the indicators over the FlatList
-    bottom: 20, // Bottom of the screen
-    alignSelf: 'center',
-  },
-  flatListContainer: {
-    flexDirection: 'row',
-  },
-  indicator: {
-    width: 80,
-    height: 4,
-    borderRadius: 6,
-    backgroundColor: '#D9D9D9',
-    marginHorizontal: 5,
-    opacity: 0.8,
-  },
-  activeIndicator: {
-    height: 4,
-    width: 80,
-    borderRadius: 6,
-    backgroundColor: '#7E7E7E',
-    opacity: 1,
-  },
-  articleContainer: {
-    width: '100%',
-    backgroundColor: '#fff',
-    borderBottomWidth: 1,
-    borderBottomColor: '#eaeaea',
-    paddingVertical: 20,
-    paddingHorizontal: 16,
-  },
-  articleImage: {
-    width: '100%',
-    height: 200,
-    resizeMode: 'cover',
-    borderRadius: 10,
-  },
-  articleTextContainer: {
-    marginTop: 10,
-  },
-  articleArtistName: {
-    ...textBold,
-    fontSize: 18,
-  },
-  articleExhibitionName: {
-    ...textItalic,
-    fontSize: 16,
-  },
-  articleLocation: {
-    ...textRegular,
-    fontSize: 16,
-  },
-});
-
-const getRandomArtPieces = (artistsData) => {
-  // This should return a random selection of art pieces from your data
+const Article = ({artistName, artwork, exhibitionName, location}) => {
+  return (
+    <View style={styles.articleContainer}>
+      <Image style={styles.articleImage} source={{ uri: artwork }} />
+      <Text style={styles.artistName}>{artistName}</Text>
+      <Text style={styles.exhibitionName}>{exhibitionName}</Text>
+      <Text style={styles.location}>{location}</Text>
+    </View>
+  );
 };
 
 function HomeScreen({navigation}) {
@@ -195,24 +46,13 @@ function HomeScreen({navigation}) {
   const {width} = Dimensions.get('window');
   const scrollViewRef = useRef();
   const [activeIndex, setActiveIndex] = useState(0);
+  const [articles, setArticles] = useState([]);
 
   const handleScroll = (event) => {
     const contentOffset = event.nativeEvent.contentOffset.x;
     const newIndex = Math.round(contentOffset / width);
     setActiveIndex(newIndex);
   };
-
-  const ArticleItem = ({ art, artist, location }) => (
-    <View style={styles.articleContainer}>
-      <Image source={{ uri: art.imageUrl }} style={styles.articleImage} />
-      <View style={styles.articleTextContainer}>
-        <Text style={styles.articleArtistName}>{artist.name}</Text>
-        <Text style={styles.articleExhibitionName}>{art.exhibitionName}</Text>
-        <Text style={styles.articleLocation}>{location}</Text>
-      </View>
-    </View>
-  );
-
 
   useEffect(() => {
     const fetchProfiles = async () => {
@@ -243,6 +83,21 @@ function HomeScreen({navigation}) {
   }, []);
 
   useEffect(() => {
+    const articlesData = artistProfiles.map((profile) => {
+      // Choose a random piece from the first exhibition for simplicity
+      const randomPieceIndex = Math.floor(Math.random() * profile.exhibitions[0].pieces.length);
+      const piece = profile.exhibitions[0].pieces[randomPieceIndex];
+      return {
+        artistName: profile.artistName,
+        artwork: piece.imageName,
+        exhibitionName: profile.exhibitions[0]['exhibition name'],
+        location: profile.exhibitionLocation,
+      };
+    });
+    setArticles(articlesData);
+  }, [artistProfiles]);
+
+  useEffect(() => {
     const autoScroll = setInterval(() => {
       if (scrollViewRef.current) {
         const nextIndex = activeIndex === artistProfiles.length - 1 ? 0 : activeIndex + 1;
@@ -266,18 +121,30 @@ function HomeScreen({navigation}) {
   );
 
   const renderArticles = () => {
-    // Assuming you have a function to get a random set of art pieces
-    const randomArtPieces = getRandomArtPieces(); // Implement this function based on your data structure
+    return artistProfiles.map(artist => {
+      // Randomly select one piece of artwork
+      const randomArtIndex = Math.floor(Math.random() * artist.exhibitions[0].pieces.length);
+      const artwork = artist.exhibitions[0].pieces[randomArtIndex];
 
-    return randomArtPieces.map((art, index) => (
-      <ArticleItem
-        key={index}
-        art={art}
-        artist={art.artist}
-        location={art.location}
-      />
-    ));
+      return (
+        <ArticleItem
+          key={artist.name}
+          artistName={artist.name}
+          artwork={artwork.imageName} // Assuming this is a URL to the image
+          exhibitionName={artist.exhibitions[0]['exhibition name']}
+          location={artist.location}
+        />
+      );
+    });
   };
+
+  const renderArticleItem = ({ item }) => (
+    <ArticleItem
+      art={item}
+      artist={{ name: item.artistName }}
+      location={item.location}
+    />
+  );
 
   return (
     <SafeAreaView>
@@ -322,7 +189,11 @@ function HomeScreen({navigation}) {
           <View style={styles.textContainer}>
             <Text style={styles.txt}>On View</Text>
           </View>
-          {renderArticles()}
+          <FlatList
+            data={articles}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={renderArticleItem}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
