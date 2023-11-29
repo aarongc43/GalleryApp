@@ -25,6 +25,13 @@ type HomeScreenProps = {
   navigation: StackNavigationProp<any>;
 };
 
+type ArtistProfile = {
+  exhibitionImage: string;
+  artistName: string;
+  artistExhibitName: string;
+  exhibitionLocation: string;
+};
+
 function HomeScreen({navigation}: HomeScreenProps) {
   const [artistProfiles, setArtistProfiles] = useState([]);
   const artistNames = ['Haley Josephs', 'Yucca Stuff', 'Arthur Vallin'];
@@ -48,7 +55,8 @@ function HomeScreen({navigation}: HomeScreenProps) {
             const profile = await fetchArtistProfile(name);
             const exhibition = profile.exhibitions[0];
             const exhibitionImage = exhibition?.pieces[0]?.imageName;
-            const imageUrl = exhibitionImage ? await storage().ref(exhibitionImage).getDownloadURL() : null;
+            const imageUrl = exhibitionImage
+              ? await storage().ref(exhibitionImage).getDownloadURL() : null;
             console.log(`Image URL for ${name}: ${imageUrl}`);
             return {
               exhibitionImage: imageUrl,
@@ -66,7 +74,7 @@ function HomeScreen({navigation}: HomeScreenProps) {
     };
 
     fetchProfiles();
-  }, []);
+  }, [artistNames]);
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -84,7 +92,7 @@ function HomeScreen({navigation}: HomeScreenProps) {
             return {
               articleImage: imageUrl,
               articleName: artistProfile.name,
-              articleExhibitionName: exhibition['exhibitionName'],
+              articleExhibitionName: exhibition['exhibition name'],
             };
           } catch (error) {
             console.error('Error fetching article:', error);
