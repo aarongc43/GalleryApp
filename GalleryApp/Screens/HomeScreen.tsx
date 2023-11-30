@@ -74,7 +74,7 @@ function HomeScreen({navigation}: HomeScreenProps) {
     };
 
     fetchProfiles();
-  }, [artistNames]);
+  }, []);
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -88,7 +88,6 @@ function HomeScreen({navigation}: HomeScreenProps) {
             const piece = exhibition.pieces[randomPieceIndex];
             const imageUrl = await storage().ref(piece.imageName).getDownloadURL();
 
-            console.log(`Exhibition Name for ${artistName}:`, exhibition['exhibition name']);
             return {
               articleImage: imageUrl,
               articleName: artistProfile.name,
@@ -98,7 +97,7 @@ function HomeScreen({navigation}: HomeScreenProps) {
             console.error('Error fetching article:', error);
             return null;
           }
-        })
+        }),
       );
       setArticles(fetchedArticles.filter(article => article !== null));
     };
