@@ -1,131 +1,122 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
+import storage from '@react-native-firebase/storage';
 import {
   SafeAreaView,
   ScrollView,
-  StyleSheet,
   Text,
   TouchableOpacity,
   View,
+  Image,
+  FlatList,
+  ActivityIndicator,
 } from 'react-native';
+import styles from '../styles/Artists';
+import { fetchArtistProfile } from './ArtistProfile';
 
-function Artists({navigation}) {
-  const styles = StyleSheet.create({
-    container: {
-      justifyContent: 'center',
-      alignItems: 'center',
-      flexDirection: 'column',
-      backgroundColor: '#a9a9a9',
-      height: 800,
-      padding: 20,
-    },
-    textContainer: {
-      flex: 1,
-      justifyContent: 'flex-start',
-      alignItems: 'flex-start',
-    },
-    Mellifloo_txt: {
-      marginLeft: 140,
-      marginTop: -15,
-      marginBottom: -20,
-      height: 35,
-      width: 90,
-      fontFamily: 'ACaslonPro-Bold',
-      fontSize: 20,
-      textAlign: 'center',
-      color: 'black',
-    },
-    Menu_txt: {
-      marginLeft: 300,
-      marginTop: -15,
-      height: 30,
-      width: 52,
-      fontFamily: 'ACaslonPro-Bold',
-      fontSize: 20,
-      textAlign: 'right',
-      color: '#7E7E7E',
-    },
-    horizontalLine: {
-      marginBottom: 10,
-      width: 350,
-      borderBottomColor: '#D9D9D9', // Color of the line
-      borderBottomWidth: 1, // Thickness of the line
-    },
-    Artists_txt: {
-      marginTop: -10,
-      marginBottom: -10,
-      fontFamily: 'ACaslonPro-Bold',
-      fontSize: 40,
-      color: 'black',
-    },
-    rowContainer: {
-      marginTop: -10,
-      marginLeft: -8,
-      flexDirection: 'row',
-      justifyContent: 'flex-start',
-    },
-    rowText: {
-      marginBottom: 2,
-      margin: 10,
-    },
-    selectedText: {
-      fontFamily: 'ACaslonPro-Bold',
-      fontSize: 18,
-      color: 'black',
-    },
-    unselectedText: {
-      fontFamily: 'ACaslonPro-Bold',
-      fontSize: 18,
-      color: 'gray',
-    },
-  });
+function ArtistScreen({route}) {
+  const [artist, setArtist] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const [selectedText, setSelectedText] = useState('current');
+  useEffect(() => {
+    const fetchArtistData = async () => {
+      try {
+        setLoading(true);
+        const artistData = await fetchArtistProfile(route.params.artistName);
 
-  const texts = [
-    {label: 'Current', key: 'current'},
-    {label: 'Upcoming', key: 'upcoming'},
-    {label: 'Archive', key: 'archive'},
-  ];
+        // Fetch the profile photo URL
+        const profilePhotoUrl = artistData.profilePhoto
+          ? await storage().ref(artistData.profilePhoto).getDownloadURL()
+          : null;
 
-  const handleTextPress = (key) => {
-    setSelectedText(key);
-  };
+        // Fetch URLs for all exhibition images
+        const exhibitionsWithUrls = await Promise.all(
+          artistData.exhibitions.map(async exhibition => ({
+            ...exhibition,
+            pieces: await Promise.all(
+              exhibition.pieces.map(async piece => ({
+                ...piece,
+                imageName: await storage().ref(piece.imageName).getDownloadURL(),
+              })),
+            ),
+          })),
+        );
+
+        setArtist({...artistData, profilePhoto: profilePhotoUrl, exhibitions: exhibitionsWithUrls});
+      } catch (err) {
+        console.error(err);
+        setError('Failed to load artist data.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchArtistData();
+  }, [route.params.artistName]);
+
+  if (loading) {
+    return (
+      <SafeAreaView style={styles.loaderContainer}>
+        <ActivityIndicator size="large" />
+      </SafeAreaView>
+    );
+  }
+
+  if (error) {
+    return (
+      <SafeAreaView style={styles.errorContainer}>
+        <Text>{error}</Text>
+      </SafeAreaView>
+    );
+  }
+
+  if (!artist) {
+    return (
+      <SafeAreaView style={styles.container}>
+        <Text>No artist data available.</Text>
+      </SafeAreaView>
+    );
+  }
 
   return (
-    <SafeAreaView>
-      <ScrollView>
+    <SafeAreaView style={styles.container}>
+      <ScrollView style={{flex: 1}}>
         <View style={styles.container}>
-          <View style={styles.textContainer}>
-            <Text style={styles.Mellifloo_txt}>Mellifloo</Text>
-            <TouchableOpacity onPress={() => navigation.navigate('Menu')}>
-              <Text style={styles.Menu_txt}>Menu</Text>
-            </TouchableOpacity>
-            <View style={styles.horizontalLine}></View>
-            <Text style={styles.Artists_txt}>ARTISTS</Text>
-            <View style={styles.horizontalLine}></View>
-            <View style={styles.rowContainer}>
-              {texts.map(textItem => (
-                <TouchableOpacity
-                  key={textItem.key}
-                  onPress={() => handleTextPress(textItem.key)}>
-                  <Text
-                    style={[
-                      styles.rowText,
-                      selectedText === textItem.key
-                        ? styles.selectedText
-                        : styles.unselectedText,
-                    ]}>
-                    {textItem.label}
-                  </Text>
-                </TouchableOpacity>
-              ))}
-            </View>
-            <View style={styles.horizontalLine}></View>
-          </View>
+          <TouchableOpacity onPress={() => navigation.navigate('Menu')}>
+            <Text style={styles.Menu_txt}>Menu</Text>
+          </TouchableOpacity>
+          <Text style={styles.Mellifloo_txt}>Mellifloo</Text>
+          <View style={styles.horizontalLine}></View>
+          
+          <Text style={styles.artistTitle}>ARTIST</Text>
+          <Image source={{uri: artist.profilePhoto}} style={styles.profilePhoto} />
+          <Text style={styles.artistName}>{artist.name}</Text>
+          <Text style={styles.artistBio}>{artist.bio}</Text>
+
+          <FlatList
+            data={artist.exhibitions}
+            keyExtractor={(item, index) => `exhibition-${index}`}
+            renderItem={({item}) => (
+              <View>
+                <Text style={styles.exhibitionName}>{item.exhibitionName}</Text>
+                <FlatList
+                  data={item.pieces}
+                  horizontal
+                  keyExtractor={(piece, index) => `piece-${index}`}
+                  renderItem={({item: piece}) => (
+                    <Image
+                      source={{uri: piece.imageName}}
+                      style={styles.artworkImage}
+                    />
+                  )}
+                />
+              </View>
+            )}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
   );
 }
 
-export default Artists;
+export default ArtistScreen;
