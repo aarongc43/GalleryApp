@@ -33,13 +33,15 @@ export default StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'column',
     backgroundColor: '#a9a9a9',
-    height: 800,
+    height: '100%',
+    paddingTop: 40,
     padding: 20,
     flex: 1,
   },
   textContainer: {
     width: '100%',
     justifyContent: 'flex-start',
+    marginTop: 20,
   },
   menuButton: {
     alignSelf: 'flex-end',
@@ -52,6 +54,13 @@ export default StyleSheet.create({
     fontSize: 40,
     color: 'black',
     textAlign: 'center',
+  },
+  artistItemContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
   },
   scrollViewContainer: {
     alignItems: 'center',
@@ -80,11 +89,25 @@ export default StyleSheet.create({
     fontSize: 40,
     color: 'black',
   },
+  artistItemImage: {
+    width: 60, // Adjust as needed
+    height: 60, // Adjust as needed
+    borderRadius: 30,
+    marginRight: 10,
+  },
+  artistItemName: {
+    ...textBold,
+    fontSize: 20,
+  },
   rowContainer: {
-    marginTop: -10,
+    marginTop: 20,
     marginLeft: -8,
     flexDirection: 'row',
     justifyContent: 'flex-start',
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    padding: 10,
   },
   rowText: {
     marginBottom: 2,
@@ -106,26 +129,31 @@ export default StyleSheet.create({
     borderRadius: (width * 0.8) / 2, // Circular image
     alignSelf: 'center', // Center align in the view
     marginVetical: 10, // Margin bottom
+    borderWidth: 2,
+    borderColor: '#333',
   },
   exhibitionContainer: {
     paddingBottom: 20,
   },
+  artDescription: {
+    ...textRegular,
+    fontSize: 12,
+  },
   artworkImage: {
-    width: width * 0.9, // 90% of screen width
-    height: width * 0.9, // Adjust height according to your aspect ratio
+    width: '100%',
+    aspectRatio: 1,
     alignSelf: 'center',
-    marginVertical: 10,
     resizeMode: 'cover',
+    borderWidth: 2,
+    borderColor: '#333',
   },
   artistName: {
     ...textBold,
     fontSize: 28,
-    marginVertical: 4,
   },
   artistBio: {
     ...textRegular,
     fontSize: 18,
     textAlign: 'justify',
-    marginVertical: 4,
   },
 });
