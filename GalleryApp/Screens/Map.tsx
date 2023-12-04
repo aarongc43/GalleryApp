@@ -121,10 +121,10 @@ function Map({ navigation }) {
 
   const pins = [
     { x: 60, y: 275, artistName: 'Arthur Vallin' },
-    { x: 160, y: 163, exhibitionId: 'exhibition1', artistName: 'Haley Josephs' },
-    { x: 212, y: 163, exhibitionId: 'exhibition1', artistName: 'Tafy LaPlanche' },
-    { x: 160, y: 243, exhibitionId: 'exhibition1', artistName: 'Yucca Stuff' },
-    { x: 212, y: 243, exhibitionId: 'exhibition1', artistName: 'Yang Seung Jin' },
+    { x: 151, y: 182, exhibitionId: 'exhibition1', artistName: 'Haley Josephs' },
+    { x: 235, y: 182, exhibitionId: 'exhibition1', artistName: 'Tafy LaPlanche' },
+    { x: 160, y: 241, exhibitionId: 'exhibition1', artistName: 'Yucca Stuff' },
+    { x: 212, y: 241, exhibitionId: 'exhibition1', artistName: 'Yang Seung Jin' },
     { x: 299, y: 208, exhibitionId: 'exhibition1', artistName: 'Arthur Vallin' },
     // Add more pins as needed
   ];
