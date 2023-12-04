@@ -20,20 +20,15 @@ import Exhibitions from './Exhibitions';
 import Artists from './Artists';
 import Map from './Map'
 import { fetchArtistProfile } from './ArtistProfile';
+import ArtistScreen from './Artists';
 import styles from '../styles/HomeScreenStyles';
 
 type HomeScreenProps = {
   navigation: StackNavigationProp<any>;
 };
 
-type ArtistProfile = {
-  exhibitionImage: string;
-  artistName: string;
-  artistExhibitName: string;
-  exhibitionLocation: string;
-};
+function HomeScreen({navigation}: HomeScreenProps) {
 
-function HomeScreen({ navigation }: HomeScreenProps) {
   const [artistProfiles, setArtistProfiles] = useState([]);
   const artistNames = ['Haley Josephs', 'Yucca Stuff', 'Arthur Vallin'];
   const artistArticles = ['Haley Josephs', 'Tafy LaPlanche', 'Yang Seung Jin'];
@@ -69,7 +64,7 @@ function HomeScreen({ navigation }: HomeScreenProps) {
             console.error('Error fetching artist profile:', error);
             return null;
           }
-        })
+        }),
       );
       setArtistProfiles(profiles.filter((profile) => profile !== null));
     };
@@ -118,10 +113,11 @@ function HomeScreen({ navigation }: HomeScreenProps) {
     return () => clearInterval(autoScroll);
   }, [activeIndex, artistProfiles.length, width]);
 
-  const renderItem = ({ item }) => (
-    <TouchableOpacity onPress={() => navigation.navigate('Artist', { artistName: item.artistName })}>
-      <View style={[styles.itemContainer, { width }]}>
-        <Image source={{ uri: item.exhibitionImage }} style={styles.imageStyle} />
+
+  const renderItem = ({item}) => (
+    <TouchableOpacity onPress={() => navigation.navigate('Artists', { artistName: item.artistName })}>
+      <View style={[styles.itemContainer, {width}]}>
+        <Image source={{uri: item.exhibitionImage}} style={styles.imageStyle} />
         <View style={styles.textInfoContainer}>
           <Text style={styles.artistName}>{item.artistName}</Text>
           <Text style={styles.exhibitionName}>{item.artistExhibitName}</Text>
@@ -174,9 +170,8 @@ function HomeScreen({ navigation }: HomeScreenProps) {
           {articles.length > 0 && (
             <View style={{ flex: 1 }}>
               {articles.map((article, index) => (
-                <TouchableOpacity key={index} onPress={() => navigation.navigate('Artist', { artistName: article.articleName })}>
+                <TouchableOpacity key={index} onPress={() => navigation.navigate('Artists', {artistName: article.articleName})}>
                   <View key={index} style={styles.articleContainer}>
-                    {/* Your article layout goes here */}
                     <Image source={{ uri: article.articleImage }} style={styles.articleImage} />
                     <View style={styles.articleTextContainer}>
                       <Text style={styles.articleArtistName}>{article.articleName}</Text>
@@ -208,6 +203,7 @@ export default function HomeMenuScreen() {
       <Stack.Screen name="Exhibitions" component={Exhibitions} />
       <Stack.Screen name="Artists" component={Artists} />
       <Stack.Screen name="Map" component={Map} />
+
     </Stack.Navigator>
   );
 }
