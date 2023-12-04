@@ -1,8 +1,9 @@
 import 'react-native-gesture-handler';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './Screens/HomeScreen';
 import LoadingScreen from './Screens/LoadingScreen';
+// import Map from './Screens/Map'
 
 const App = () => {
   const Stack = createStackNavigator();
@@ -10,7 +11,7 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName="LoadingScreen"
-        screenOptions={{headerShown: false, gestureEnabled: false}}>
+        screenOptions={{ headerShown: false, gestureEnabled: false }}>
         <Stack.Screen
           name="LoadingScreen"
           component={LoadingScreen}
@@ -22,7 +23,7 @@ const App = () => {
         <Stack.Screen
           name="HomeScreen"
           component={HomeScreen}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>
