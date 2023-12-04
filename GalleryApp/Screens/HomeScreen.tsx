@@ -1,7 +1,7 @@
-import React, {useRef, useEffect, useState} from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {NativeSyntheticEvent, NativeScrollEvent} from 'react-native';
+import React, { useRef, useEffect, useState } from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { NativeSyntheticEvent, NativeScrollEvent } from 'react-native';
 
 import storage from '@react-native-firebase/storage';
 import {
@@ -17,8 +17,10 @@ import {
 
 import MenuScreen from './MenuScreen';
 import Exhibitions from './Exhibitions';
+import Artists from './Artists';
+import Map from './Map'
+import { fetchArtistProfile } from './ArtistProfile';
 import ArtistScreen from './Artists';
-import {fetchArtistProfile} from './ArtistProfile';
 import styles from '../styles/HomeScreenStyles';
 
 type HomeScreenProps = {
@@ -26,10 +28,11 @@ type HomeScreenProps = {
 };
 
 function HomeScreen({navigation}: HomeScreenProps) {
+
   const [artistProfiles, setArtistProfiles] = useState([]);
   const artistNames = ['Haley Josephs', 'Yucca Stuff', 'Arthur Vallin'];
   const artistArticles = ['Haley Josephs', 'Tafy LaPlanche', 'Yang Seung Jin'];
-  const {width} = Dimensions.get('window');
+  const { width } = Dimensions.get('window');
   const scrollViewRef = useRef();
   const [activeIndex, setActiveIndex] = useState(0);
   const [articles, setArticles] = useState([]);
@@ -110,6 +113,7 @@ function HomeScreen({navigation}: HomeScreenProps) {
     return () => clearInterval(autoScroll);
   }, [activeIndex, artistProfiles.length, width]);
 
+
   const renderItem = ({item}) => (
     <TouchableOpacity onPress={() => navigation.navigate('Artists', { artistName: item.artistName })}>
       <View style={[styles.itemContainer, {width}]}>
@@ -124,8 +128,8 @@ function HomeScreen({navigation}: HomeScreenProps) {
   );
 
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <ScrollView style={{flex: 1}}>
+    <SafeAreaView style={{ flex: 1 }}>
+      <ScrollView style={{ flex: 1 }}>
         <View style={styles.container}>
           <View style={styles.textContainer}>
             <TouchableOpacity onPress={() => navigation.navigate('Menu')}>
@@ -164,7 +168,7 @@ function HomeScreen({navigation}: HomeScreenProps) {
             ))}
           </View>
           {articles.length > 0 && (
-            <View style={{flex: 1}}>
+            <View style={{ flex: 1 }}>
               {articles.map((article, index) => (
                 <TouchableOpacity key={index} onPress={() => navigation.navigate('Artists', {artistName: article.articleName})}>
                   <View key={index} style={styles.articleContainer}>
@@ -197,7 +201,9 @@ export default function HomeMenuScreen() {
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Menu" component={MenuScreen} />
       <Stack.Screen name="Exhibitions" component={Exhibitions} />
-      <Stack.Screen name="Artists" component={ArtistScreen} />
+      <Stack.Screen name="Artists" component={Artists} />
+      <Stack.Screen name="Map" component={Map} />
+
     </Stack.Navigator>
   );
 }

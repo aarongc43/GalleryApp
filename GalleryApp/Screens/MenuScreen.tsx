@@ -1,14 +1,15 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
+  Image,
   TouchableOpacity,
   View,
 } from 'react-native';
 
-function MenuScreen({navigation}) {
+function MenuScreen({ navigation }) {
 
   const [selectedScreen, setSelectedScreen] = useState('Home');
 
@@ -91,9 +92,8 @@ function MenuScreen({navigation}) {
               <Text style={styles.Menu_list}>Artists</Text>
             </TouchableOpacity>
             <View style={styles.horizontalLine}></View>
-            <TouchableOpacity
-              onPress={() => handleScreenSelect('Gallery Layout')}>
-              <Text style={styles.Menu_list}>Gallery Layout</Text>
+            <TouchableOpacity onPress={() => handleScreenSelect('Map')}>
+              <Text style={styles.Menu_list}>Map</Text>
             </TouchableOpacity>
             <View style={styles.horizontalLine}></View>
           </View>
