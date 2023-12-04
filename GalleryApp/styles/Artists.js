@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 
 const textRegular = {
   fontSize: 24,
@@ -25,31 +25,46 @@ const textNY = {
   fontFamily: 'NY Irvin',
 };
 
+const {width} = Dimensions.get('window');
+
 export default StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
     backgroundColor: '#a9a9a9',
-    height: 800,
+    height: '100%',
+    paddingTop: 40,
     padding: 20,
     flex: 1,
   },
   textContainer: {
-    flex: 1,
+    width: '100%',
     justifyContent: 'flex-start',
-    alignItems: 'flex-start',
+    marginTop: 20,
   },
-  Mellifloo_txt: {
-    marginLeft: 140,
-    marginTop: -15,
-    marginBottom: -20,
-    height: 35,
-    width: 90,
-    fontFamily: 'ACaslonPro-Bold',
-    fontSize: 20,
-    textAlign: 'center',
+  menuButton: {
+    alignSelf: 'flex-end',
+    padding: 16,
+  },
+  Artists_text: {
+    ...textNY,
+    marginTop: 10,
+    marginBottom: 10,
+    fontSize: 40,
     color: 'black',
+    textAlign: 'center',
+  },
+  artistItemContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+  },
+  scrollViewContainer: {
+    alignItems: 'center',
+    padding: 20,
   },
   Menu_txt: {
     marginLeft: 300,
@@ -74,11 +89,25 @@ export default StyleSheet.create({
     fontSize: 40,
     color: 'black',
   },
+  artistItemImage: {
+    width: 60, // Adjust as needed
+    height: 60, // Adjust as needed
+    borderRadius: 30,
+    marginRight: 10,
+  },
+  artistItemName: {
+    ...textBold,
+    fontSize: 20,
+  },
   rowContainer: {
-    marginTop: -10,
+    marginTop: 20,
     marginLeft: -8,
     flexDirection: 'row',
     justifyContent: 'flex-start',
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    padding: 10,
   },
   rowText: {
     marginBottom: 2,
@@ -95,17 +124,36 @@ export default StyleSheet.create({
     color: 'gray',
   },
   profilePhoto: {
-    width: 200, // Adjust width as needed
-    height: 200, // Adjust height as needed
-    borderRadius: 100, // Circular image
+    width: width * 0.8, // Adjust width as needed
+    height: width * 0.8, // Adjust height as needed
+    borderRadius: (width * 0.8) / 2, // Circular image
     alignSelf: 'center', // Center align in the view
-    marginBottom: 20, // Margin bottom
+    marginVetical: 10, // Margin bottom
+    borderWidth: 2,
+    borderColor: '#333',
   },
-
-  // Style for artwork images in the exhibition list
+  exhibitionContainer: {
+    paddingBottom: 20,
+  },
+  artDescription: {
+    ...textRegular,
+    fontSize: 12,
+  },
   artworkImage: {
-    width: 150, // Adjust width as needed
-    height: 150, // Adjust height as needed
-    marginRight: 10, // Space between images in horizontal list
+    width: '100%',
+    aspectRatio: 1,
+    alignSelf: 'center',
+    resizeMode: 'cover',
+    borderWidth: 2,
+    borderColor: '#333',
+  },
+  artistName: {
+    ...textBold,
+    fontSize: 28,
+  },
+  artistBio: {
+    ...textRegular,
+    fontSize: 18,
+    textAlign: 'justify',
   },
 });

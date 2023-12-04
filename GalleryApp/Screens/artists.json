@@ -2,8 +2,8 @@
     "artists": [
         {
             "name": "Arthur Vallin",
-            "bio": "/Arthur Vallin/arthurvallin.txt",
-            "location": "Odessa",
+            "bio": "French artist, designer, and creative director Arthur Vallin holds a master's degree in Art Direction from the prestigious design academy Penninghen located in Paris, France. In 2010 he moved to New York and joined Harley & Company as a partner to develop and lead their creative team. He extended the design studio's capabilities, creating award-winning projects ranging from immersive experiences,set design, digital innovation, global campaigns, and more.",
+            "location": "Paris",
             "profilePhoto": "/Arthur Vallin/arthur vallin.png",
             "exhibitions": [
                 {
@@ -35,8 +35,8 @@
         },
         {
             "name": "Haley Josephs",
-            "bio": "Haley Josephs/haleyjosephs.txt",
-            "location": "Odessa",
+            "bio": "b. 1987 Lives and works in Brooklyn, NY\n\nEDUCATION\n\n2014 MFA, Painting & Printmaking, Yale University, New Haven, CT \n\n2011 BFA, Painting & Drawing, Tyler School of Art, Temple University, Philadelphia, PA\n\n2009 Temple University Rome, Rome, Italy",
+            "location": "New York",
             "profilePhoto": "/Haley Josephs/haleyjosephs.png",
             "exhibitions": [
                 {
@@ -69,7 +69,7 @@
         {
             "name": "Tafy LaPlanche",
             "bio": "/Tafy LaPlanche/tafylaplanche.txt",
-            "location": "Odessa",
+            "location": "Savannah, Georgia",
             "profilePhoto": "/Tafy LaPlanche/tafylaplanche.png",
             "exhibitions": [
                 {
@@ -102,7 +102,7 @@
         {
             "name": "Yucca Stuff",
             "bio": "/Yucca Stuff/yuccastuff.txt",
-            "location": "Odessa",
+            "location": "Austin",
             "profilePhoto": "/Yucca Stuff/danielmorrison.png",
             "exhibitions": [
                 {
@@ -135,8 +135,8 @@
         {
             "name": "Yang Seung Jin",
             "bio": "/Yang Seung Jin/yangseungjin.txt",
-            "location": "Odessa",
-            "profilePhoto": "/Yang Seung Jin/yangseungjin.png",
+            "location": "Seoul",
+            "profilePhoto": "/Yang Seung Jin/seungjinyang.jpg",
             "exhibitions": [
                 {
                     "exhibition name": "D",
