@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 
 const textRegular = {
   fontSize: 24,
@@ -25,6 +25,8 @@ const textNY = {
   fontFamily: 'NY Irvin',
 };
 
+const {width} = Dimensions.get('window');
+
 export default StyleSheet.create({
   container: {
     justifyContent: 'center',
@@ -36,20 +38,24 @@ export default StyleSheet.create({
     flex: 1,
   },
   textContainer: {
-    flex: 1,
+    width: '100%',
     justifyContent: 'flex-start',
-    alignItems: 'flex-start',
   },
-  Mellifloo_txt: {
-    marginLeft: 140,
-    marginTop: -15,
-    marginBottom: -20,
-    height: 35,
-    width: 90,
-    fontFamily: 'ACaslonPro-Bold',
-    fontSize: 20,
-    textAlign: 'center',
+  menuButton: {
+    alignSelf: 'flex-end',
+    padding: 16,
+  },
+  Artists_text: {
+    ...textNY,
+    marginTop: 10,
+    marginBottom: 10,
+    fontSize: 40,
     color: 'black',
+    textAlign: 'center',
+  },
+  scrollViewContainer: {
+    alignItems: 'center',
+    padding: 20,
   },
   Menu_txt: {
     marginLeft: 300,
@@ -95,17 +101,31 @@ export default StyleSheet.create({
     color: 'gray',
   },
   profilePhoto: {
-    width: 200, // Adjust width as needed
-    height: 200, // Adjust height as needed
-    borderRadius: 100, // Circular image
+    width: width * 0.8, // Adjust width as needed
+    height: width * 0.8, // Adjust height as needed
+    borderRadius: (width * 0.8) / 2, // Circular image
     alignSelf: 'center', // Center align in the view
-    marginBottom: 20, // Margin bottom
+    marginVetical: 10, // Margin bottom
   },
-
-  // Style for artwork images in the exhibition list
+  exhibitionContainer: {
+    paddingBottom: 20,
+  },
   artworkImage: {
-    width: 150, // Adjust width as needed
-    height: 150, // Adjust height as needed
-    marginRight: 10, // Space between images in horizontal list
+    width: width * 0.9, // 90% of screen width
+    height: width * 0.9, // Adjust height according to your aspect ratio
+    alignSelf: 'center',
+    marginVertical: 10,
+    resizeMode: 'cover',
+  },
+  artistName: {
+    ...textBold,
+    fontSize: 28,
+    marginVertical: 4,
+  },
+  artistBio: {
+    ...textRegular,
+    fontSize: 18,
+    textAlign: 'justify',
+    marginVertical: 4,
   },
 });
