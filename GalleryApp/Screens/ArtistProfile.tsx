@@ -34,7 +34,14 @@ const getArtistDataByName = (artistName: string): Artist | undefined => {
 
 const fetchProfilePhotoUrl = async (photoPath: string | null): Promise<string | null> => {
   if (!photoPath) return null;
-  return storage().ref(photoPath).getDownloadURL();
+  try {
+    const url = await storage().ref(photoPath).getDownloadURL();
+    console.log(`Fetched URL for ${photoPath}: ${url}`);
+    return url;
+  } catch (error) {
+    console.error(`Error fetching URL for ${photoPath}: ${error}`);
+    return null;
+  }
 };
 
 const fetchImageUrls = async (imageNames: string[]): Promise<string[]> => {
@@ -102,7 +109,17 @@ export const fetchAllArtists = async (): Promise<Artist[]> => {
   try {
     const allArtists = await Promise.all(
       artistNamesArray.map(async (artistName) => {
-        return await fetchArtistProfile(artistName);
+        const artistData = getArtistDataByName(artistName);
+        if (!artistData) {
+          throw new Error(`Artist ${artistName} not found`);
+        }
+        const profilePhotoUrl = await fetchProfilePhotoUrl(
+          artistData.profilePhoto,
+        );
+        return {
+          ...artistData,
+          profilePhoto: profilePhotoUrl,
+        };
       }),
     );
 

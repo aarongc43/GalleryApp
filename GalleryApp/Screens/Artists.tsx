@@ -12,7 +12,6 @@ import {
 
 import styles from '../styles/Artists';
 import {fetchArtistProfile, fetchAllArtists} from './ArtistProfile';
-import artistsData from './artists.json';
 
 function ArtistScreen({route, navigation}) {
   const [artist, setArtist] = useState(null);
@@ -22,7 +21,15 @@ function ArtistScreen({route, navigation}) {
 
   const artistName = route.params?.artistName;
 
-  const fetchSingleArtist = async (name) => {
+  useEffect(() => {
+    if (artistName) {
+      fetchSingleArtist(artistName);
+    } else {
+      fetchArtistsList();
+    }
+  }, [artistName]);
+
+  const fetchSingleArtist = async name => {
     try {
       setLoading(true);
       const artistData = await fetchArtistProfile(name);
@@ -102,14 +109,6 @@ function ArtistScreen({route, navigation}) {
       </TouchableOpacity>
     );
   };
-
-  useEffect(() => {
-    if (artistName) {
-      fetchSingleArtist(artistName);
-    } else {
-      fetchArtistsList();
-    }
-  }, [artistName]);
 
   const renderHeader = () => (
     <View style={styles.textContainer}>
