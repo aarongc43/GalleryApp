@@ -1,6 +1,83 @@
 {
     "artists": [
         {
+            "name": "Yang Seung Jin",
+            "bio": "/Yang Seung Jin/yangseungjin.txt",
+            "location": "Seoul",
+            "profilePhoto": "/Yang Seung Jin/seungjinyang.jpg",
+            "exhibitions": [
+                {
+                    "exhibition name": "D",
+                    "pieces": [
+                        {
+                            "imageName": "/Yang Seung Jin/Exhibitions/D/piece1.jpg"
+                        },
+                        {
+                            "imageName": "/Yang Seung Jin/Exhibitions/D/piece2.jpg"
+                        },
+                        {
+                            "imageName": "/Yang Seung Jin/Exhibitions/D/piece3.jpg"
+                        },
+                        {
+                            "imageName": "/Yang Seung Jin/Exhibitions/D/piece4.jpg"
+                        },
+                        {
+                            "imageName": "/Yang Seung Jin/Exhibitions/D/piece5.jpg"
+                        }
+                    ]
+                },
+                {
+                    "exhibition name": "Dior",
+                    "pieces": [
+                        {
+                            "imageName": "/Yang Seung Jin/Exhibitions/Dior/piece1.jpeg"
+                        },
+                        {
+                            "imageName": "/Yang Seung Jin/Exhibitions/Dior/piece2.jpeg"
+                        },
+                        {
+                            "imageName": "/Yang Seung Jin/Exhibitions/Dior/piece3.jpeg"
+                        },
+                        {
+                            "imageName": "/Yang Seung Jin/Exhibitions/Dior/piece4.jpeg"
+                        },
+                        {
+                            "imageName": "/Yang Seung Jin/Exhibitions/Dior/piece5.jpeg"
+                        },
+                        {
+                            "imageName": "/Yang Seung Jin/Exhibitions/Dior/piece5.jpeg"
+                        },
+                        {
+                            "imageName": "/Yang Seung Jin/Exhibitions/Dior/piece5.jpeg"
+                        },
+                        {
+                            "imageName": "/Yang Seung Jin/Exhibitions/Dior/piece5.jpeg"
+                        }
+                    ]
+                },
+                {
+                    "exhibition name": "La Solo",
+                    "pieces": [
+                        {
+                            "imageName": "/Yang Seung Jin/Exhibitions/La Solo/piece1.png"
+                        },
+                        {
+                            "imageName": "/Yang Seung Jin/Exhibitions/La Solo/piece2.png"
+                        },
+                        {
+                            "imageName": "/Yang Seung Jin/Exhibitions/La Solo/piece3.png"
+                        },
+                        {
+                            "imageName": "/Yang Seung Jin/Exhibitions/La Solo/piece4.png"
+                        },
+                        {
+                            "imageName": "/Yang Seung Jin/Exhibitions/La Solo/piece5.png"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "name": "Arthur Vallin",
             "bio": "French artist, designer, and creative director Arthur Vallin holds a master's degree in Art Direction from the prestigious design academy Penninghen located in Paris, France. In 2010 he moved to New York and joined Harley & Company as a partner to develop and lead their creative team. He extended the design studio's capabilities, creating award-winning projects ranging from immersive experiences,set design, digital innovation, global campaigns, and more.",
             "location": "Paris",
@@ -132,82 +209,5 @@
                 }
             ]
         },
-        {
-            "name": "Yang Seung Jin",
-            "bio": "/Yang Seung Jin/yangseungjin.txt",
-            "location": "Seoul",
-            "profilePhoto": "/Yang Seung Jin/seungjinyang.jpg",
-            "exhibitions": [
-                {
-                    "exhibition name": "D",
-                    "pieces": [
-                        {
-                            "imageName": "/Yang Seung Jin/Exhibitions/D/piece1.jpg"
-                        },
-                        {
-                            "imageName": "/Yang Seung Jin/Exhibitions/D/piece2.jpg"
-                        },
-                        {
-                            "imageName": "/Yang Seung Jin/Exhibitions/D/piece3.jpg"
-                        },
-                        {
-                            "imageName": "/Yang Seung Jin/Exhibitions/D/piece4.jpg"
-                        },
-                        {
-                            "imageName": "/Yang Seung Jin/Exhibitions/D/piece5.jpg"
-                        }
-                    ]
-                },
-                {
-                    "exhibition name": "Dior",
-                    "pieces": [
-                        {
-                            "imageName": "/Yang Seung Jin/Exhibitions/Dior/piece1.jpeg"
-                        },
-                        {
-                            "imageName": "/Yang Seung Jin/Exhibitions/Dior/piece2.jpeg"
-                        },
-                        {
-                            "imageName": "/Yang Seung Jin/Exhibitions/Dior/piece3.jpeg"
-                        },
-                        {
-                            "imageName": "/Yang Seung Jin/Exhibitions/Dior/piece4.jpeg"
-                        },
-                        {
-                            "imageName": "/Yang Seung Jin/Exhibitions/Dior/piece5.jpeg"
-                        },
-                        {
-                            "imageName": "/Yang Seung Jin/Exhibitions/Dior/piece5.jpeg"
-                        },
-                        {
-                            "imageName": "/Yang Seung Jin/Exhibitions/Dior/piece5.jpeg"
-                        },
-                        {
-                            "imageName": "/Yang Seung Jin/Exhibitions/Dior/piece5.jpeg"
-                        }
-                    ]
-                },
-                {
-                    "exhibition name": "La Solo",
-                    "pieces": [
-                        {
-                            "imageName": "/Yang Seung Jin/Exhibitions/La Solo/piece1.png"
-                        },
-                        {
-                            "imageName": "/Yang Seung Jin/Exhibitions/La Solo/piece2.png"
-                        },
-                        {
-                            "imageName": "/Yang Seung Jin/Exhibitions/La Solo/piece3.png"
-                        },
-                        {
-                            "imageName": "/Yang Seung Jin/Exhibitions/La Solo/piece4.png"
-                        },
-                        {
-                            "imageName": "/Yang Seung Jin/Exhibitions/La Solo/piece5.png"
-                        }
-                    ]
-                }
-            ]
-        }
     ]
 }

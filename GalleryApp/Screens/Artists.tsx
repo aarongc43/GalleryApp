@@ -34,14 +34,16 @@ function ArtistScreen({route, navigation}) {
       setLoading(true);
       const artistData = await fetchArtistProfile(name);
 
-      // Fetch the profile photo URL and exhibitions with URLs
       const profilePhotoUrl = artistData.profilePhoto
         ? await storage().ref(artistData.profilePhoto).getDownloadURL()
         : null;
 
       let bioContent = artistData.bio;
       if (artistData.bio && artistData.bio.includes('.txt')) {
-        bioContent = await fetchTextFile(await storage().ref(artistData.bio).getDownloadURL());
+        const bioUrl = await storage().ref(artistData.bio).getDownloadURL();
+        // Fetch the text content of the biography from the URL.
+        const response = await fetch(bioUrl);
+        bioContent = await response.text();
       }
 
       const exhibitionsWithUrls = await Promise.all(
@@ -66,6 +68,7 @@ function ArtistScreen({route, navigation}) {
       setArtist({
         ...artistData,
         profilePhoto: profilePhotoUrl,
+        bio: bioContent,
         exhibitions: exhibitionsWithUrls,
       });
     } catch (err) {
@@ -99,9 +102,9 @@ function ArtistScreen({route, navigation}) {
     }
   };
 
-  const renderArtistListItem = ({ item }) => {
+  const renderArtistListItem = ({item}) => {
     return (
-      <TouchableOpacity onPress={() => navigation.navigate('ArtistScreen', { artistName: item.name })}>
+      <TouchableOpacity onPress={() => fetchSingleArtist(item.name)}>
         <View style={styles.artistItemContainer}>
           <Image source={{ uri: item.profilePhoto }} style={styles.artistItemImage} />
           <Text style={styles.artistItemName}>{item.name}</Text>
