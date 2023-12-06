@@ -5,14 +5,10 @@ const baseTextStyle = {
   color: 'black',
 };
 
-const titleTextStyle = {
-  
-}
-
 const sharedStyles = StyleSheet.create({
   horizontalLine: {
     marginBottom: 10,
-    width: '100%',
+    width: '100%', // Adjusted for full width
     borderBottomColor: '#D9D9D9',
     borderBottomWidth: 1,
   },
@@ -27,7 +23,6 @@ const sharedStyles = StyleSheet.create({
 export default StyleSheet.create({
   container: {
     flex: 1,
-    height: 150,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#a9a9a9',
@@ -37,20 +32,6 @@ export default StyleSheet.create({
     alignItems: 'flex-start',
     paddingHorizontal: 16,
     paddingTop: 16,
-    backgroundColor: '#a9a9a9',
-  },
-  Mellifloo_txt: {
-    ...baseTextStyle,
-    marginTop: -15,
-    marginBottom: -20,
-    marginLeft: 140,
-    fontSize: 20,
-    textAlign: 'center',
-  },
-  articleExhibitionName: {
-    ...baseTextStyle,
-    color: '#555',
-    marginTop: 4,
   },
   Menu_txt: {
     ...baseTextStyle,
@@ -60,27 +41,15 @@ export default StyleSheet.create({
     textAlign: 'right',
     color: '#7E7E7E',
   },
-  Exhibitions_txt: {
+  Artists_txt: {
     ...baseTextStyle,
     fontSize: 40,
     marginTop: -10,
     marginBottom: -10,
   },
-  rowContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '100%',
-    marginTop: -5,
-  },
-  rowText: {
-    ...baseTextStyle,
-    fontSize: 18,
-  },
   selectedText: {
     ...baseTextStyle,
     fontSize: 18,
-    color: '#000',
-    textDecorationLine: 'underline',
   },
   unselectedText: {
     ...baseTextStyle,
@@ -88,42 +57,32 @@ export default StyleSheet.create({
     color: 'gray',
   },
   horizontalLine: sharedStyles.horizontalLine,
+  imageStyle: sharedStyles.imageStyle,
   articleContainer: {
     width: '100%',
-    backgroundColor: '#a9a9a9',
+    backgroundColor: '#fff',
     borderBottomWidth: 1,
     borderBottomColor: '#eaeaea',
     paddingVertical: 20,
     paddingHorizontal: 16,
   },
-  articleImage: {
-    width: '100%',
-    height: 200,
-    resizeMode: 'cover',
-    borderRadius: 10,
-  },
+  articleImage: sharedStyles.imageStyle,
   articleTextContainer: {
-<<<<<<< HEAD
-    alignItems: 'center',
-    marginTop: 16,
-=======
-    marginLeft: 16,
-    justifyContent: 'center',
-
->>>>>>> d2b8cfe5635e10aa18613d851134b04ac24d8c25
+    marginTop: 10,
   },
-  artistName: {
+  articleArtistName: {
     ...baseTextStyle,
     fontSize: 18,
   },
-  exhibitionName: {
+  articleExhibitionName: {
     ...baseTextStyle,
     fontSize: 16,
     fontFamily: 'ACaslonPro-Italic',
   },
-  location: {
+  articleLocation: {
     ...baseTextStyle,
     fontSize: 16,
     fontFamily: 'ACaslonPro-Regular',
   },
 });
+

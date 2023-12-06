@@ -25,13 +25,23 @@ const textNY = {
   fontFamily: 'NY Irvin',
 };
 
+const baseTextStyle = {
+  fontFamily: 'ACaslonPro-Bold',
+  color: 'black',
+};
+
 export default StyleSheet.create({
   itemContainer: {
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
+<<<<<<< HEAD
     paddingVertical: 20,
     paddingHorizontal: 16,
+=======
+    paddingVertical: 20, // Add vertical padding
+    paddingHorizontal: 16, // Add horizontal padding for screen edge spacing
+>>>>>>> d2b8cfe5635e10aa18613d851134b04ac24d8c25
     backgroundColor: '#a9a9a9',
   },
   imageStyle: {
@@ -84,7 +94,7 @@ export default StyleSheet.create({
   },
   horizontalLine: {
     marginBottom: 10,
-    width: 350,
+    width: 400,
     borderBottomColor: '#D9D9D9', // Color of the line
     borderBottomWidth: 1, // Thickness of the line
   },
@@ -101,6 +111,7 @@ export default StyleSheet.create({
     color: 'black',
   },
   imageScrollView: {
+    backgroundColor: '#a9a9a9',
     width: 392,
     height: 200, // Set the height as needed
   },
@@ -114,6 +125,8 @@ export default StyleSheet.create({
   },
   flatListContainer: {
     flexDirection: 'row',
+    width: '100',
+    backgroundColor: '#a9a9a9',
   },
   indicator: {
     width: 80,
@@ -132,7 +145,7 @@ export default StyleSheet.create({
   },
   articleContainer: {
     width: '100%',
-    backgroundColor: '#fff',
+    backgroundColor: '#a9a9a9',
     borderBottomWidth: 1,
     borderBottomColor: '#eaeaea',
     paddingVertical: 20,
