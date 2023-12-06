@@ -1,85 +1,22 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   SafeAreaView,
   ScrollView,
-  StyleSheet,
   Text,
   TouchableOpacity,
   View,
+  Image,
 } from 'react-native';
+import {FlatList} from 'react-native-gesture-handler';
+import storage from '@react-native-firebase/storage';
 
-function Exhibitions({navigation}) {
-  const styles = StyleSheet.create({
-    container: {
-      justifyContent: 'center',
-      alignItems: 'center',
-      flexDirection: 'column',
-      backgroundColor: '#a9a9a9',
-      height: 800,
-      padding: 20,
-    },
-    textContainer: {
-      flex: 1,
-      justifyContent: 'flex-start',
-      alignItems: 'flex-start',
-    },
-    Mellifloo_txt: {
-      marginLeft: 140,
-      marginTop: -15,
-      marginBottom: -20,
-      height: 35,
-      width: 90,
-      fontFamily: 'ACaslonPro-Bold',
-      fontSize: 20,
-      textAlign: 'center',
-      color: 'black',
-    },
-    Menu_txt: {
-      marginLeft: 300,
-      marginTop: -15,
-      height: 30,
-      width: 52,
-      fontFamily: 'ACaslonPro-Bold',
-      fontSize: 20,
-      textAlign: 'right',
-      color: '#7E7E7E',
-    },
-    horizontalLine: {
-      marginBottom: 10,
-      width: 350,
-      borderBottomColor: '#D9D9D9', // Color of the line
-      borderBottomWidth: 1, // Thickness of the line
-    },
-    Exhibitions_txt: {
-      marginTop: -10,
-      marginBottom: -10,
-      fontFamily: 'ACaslonPro-Bold',
-      fontSize: 40,
-      color: 'black',
-    },
-    rowContainer: {
-      marginTop: -10,
-      marginLeft: -8,
-      flexDirection: 'row',
-      justifyContent: 'flex-start',
-    },
-    rowText: {
-      marginBottom: 2,
-      margin: 10,
-    },
-    selectedText: {
-      fontFamily: 'ACaslonPro-Bold',
-      fontSize: 18,
-      color: 'black',
-    },
-    unselectedText: {
-      fontFamily: 'ACaslonPro-Bold',
-      fontSize: 18,
-      color: 'gray',
-    },
-  });
+import {fetchArtistProfile} from './ArtistProfile';
+import styles from '../styles/ExhibitionScreenStyles';
 
+const Exhibitions = ({navigation}) => {
   const [selectedText, setSelectedText] = useState('current');
+  const [articles, setArticles] = useState([]);
+  const artistArticles = ['Tafy LaPlanche', 'Arthur Vallin', 'Yang Seung Jin', 'Yucca Stuff', 'Haley Josephs'];
 
   const texts = [
     {label: 'Current', key: 'current'},
@@ -91,41 +28,96 @@ function Exhibitions({navigation}) {
     setSelectedText(key);
   };
 
+  useEffect(() => {
+    const fetchArticles = async () => {
+      const fetchedArticles = await Promise.all(
+        artistArticles.map(async artistName => {
+          try {
+            const artistProfile = await fetchArtistProfile(artistName);
+            const randomExhibitionIndex = Math.floor(Math.random() * artistProfile.exhibitions.length);
+            const exhibition = artistProfile.exhibitions[randomExhibitionIndex];
+            const randomPieceIndex = Math.floor(Math.random() * exhibition.pieces.length);
+            const piece = exhibition.pieces[randomPieceIndex];
+            const imageUrl = await storage().ref(piece.imageName).getDownloadURL();
+
+            return {
+              articleImage: imageUrl,
+              articleName: artistProfile.name,
+              articleExhibitionName: exhibition['exhibitionName'],
+            };
+          } catch (error) {
+            console.error('Error fetching article:', error);
+            return null;
+          }
+        }),
+      );
+      setArticles(fetchedArticles.filter(article => article !== null));
+    };
+
+    fetchArticles();
+  }, []);
+
+  const renderHeader = () => (
+    <View style={styles.textContainer}>
+      <Text style={styles.Mellifloo_txt}>Mellifloo</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('Menu')}>
+        <Text style={styles.Menu_txt}>Menu</Text>
+      </TouchableOpacity>
+      <View style={styles.horizontalLine}></View>
+      <Text style={styles.Exhibitions_txt}>EXHIBITIONS</Text>
+      <View style={styles.horizontalLine}></View>
+      <View style={styles.rowContainer}>
+        {texts.map(textItem => (
+          <TouchableOpacity
+            key={textItem.key}
+            onPress={() => handleTextPress(textItem.key)}>
+            <Text
+              style={[
+                styles.rowText,
+                selectedText === textItem.key
+                  ? styles.selectedText
+                  : styles.unselectedText,
+              ]}>
+              {textItem.label}
+            </Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+      <View style={styles.horizontalLine}></View>
+    </View>
+  );
+
+  const renderArticleItem = ({item}) => (
+    <ScrollView>
+      <View style={styles.container}>
+        <TouchableOpacity onPress={() => navigation.navigate('Artists', { artistName: item.articleName })}>
+          <View style={styles.articleContainer}>
+            {item.articleImage ? (
+              <Image source={{ uri: item.articleImage }} style={styles.imageStyle} />
+            ) : (
+                // Consider adding a placeholder image or a view here
+                <Text>No image available</Text>
+              )}
+            <View style={styles.textInfoContainer}>
+              <Text style={styles.artistName}>{item.articleName}</Text>
+              <Text style={styles.exhibitionName}>{item.articleExhibitionName}</Text>
+            </View>
+          </View>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
+  );
+
   return (
     <SafeAreaView>
-      <ScrollView>
-        <View style={styles.container}>
-          <View style={styles.textContainer}>
-          <Text style={styles.Mellifloo_txt}>Mellifloo</Text>
-            <TouchableOpacity onPress={() => navigation.navigate('Menu')}>
-              <Text style={styles.Menu_txt}>Menu</Text>
-            </TouchableOpacity>
-            <View style={styles.horizontalLine}></View>
-            <Text style={styles.Exhibitions_txt}>EXHIBITIONS</Text>
-            <View style={styles.horizontalLine}></View>
-            <View style={styles.rowContainer}>
-              {texts.map(textItem => (
-                <TouchableOpacity
-                  key={textItem.key}
-                  onPress={() => handleTextPress(textItem.key)}>
-                  <Text
-                    style={[
-                      styles.rowText,
-                      selectedText === textItem.key
-                        ? styles.selectedText
-                        : styles.unselectedText,
-                    ]}>
-                    {textItem.label}
-                  </Text>
-                </TouchableOpacity>
-              ))}
-            </View>
-            <View style={styles.horizontalLine}></View>
-          </View>
-        </View>
-      </ScrollView>
+      <FlatList
+        data={articles}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={renderArticleItem}
+        ListHeaderComponent={renderHeader}
+      />
     </SafeAreaView>
   );
-}
+};
 
 export default Exhibitions;

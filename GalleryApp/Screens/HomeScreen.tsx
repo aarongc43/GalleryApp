@@ -20,7 +20,6 @@ import Exhibitions from './Exhibitions';
 import Artists from './Artists';
 import Map from './Map';
 import {fetchArtistProfile} from './ArtistProfile';
-import ArtistScreen from './Artists';
 import styles from '../styles/HomeScreenStyles';
 
 type HomeScreenProps = {
