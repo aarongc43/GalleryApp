@@ -122,16 +122,35 @@ function Map({ navigation }) {
       fontWeight: 'bold',
       textAlign: 'center',
     },
+    modalName: {
+      fontWeight: 'bold',
+      fontSize: 20,
+      marginBottom: 5,
+    },
+    modalBio: {
+      fontSize: 16,
+      marginBottom: 5,
+    },
+    modalLocation: {
+      fontSize: 16,
+      marginBottom: 5,
+    },
+    modalSeparator: {
+      height: 2,
+      backgroundColor: '#D9D9D9',
+      alignSelf: 'stretch',
+      marginBottom: 5,
+    },
     // Additional styles
   });
 
   const pins = [
     { x: 60, y: 275, artistName: 'Arthur Vallin' },
-    { x: 151, y: 182, exhibitionId: 'exhibition1', artistName: 'Haley Josephs' },
-    { x: 235, y: 182, exhibitionId: 'exhibition1', artistName: 'Tafy LaPlanche' },
-    { x: 160, y: 241, exhibitionId: 'exhibition1', artistName: 'Yucca Stuff' },
-    { x: 212, y: 241, exhibitionId: 'exhibition1', artistName: 'Yang Seung Jin' },
-    { x: 299, y: 208, exhibitionId: 'exhibition1', artistName: 'Arthur Vallin' },
+    { x: 151, y: 182, artistName: 'Haley Josephs' },
+    { x: 235, y: 182, artistName: 'Tafy LaPlanche' },
+    { x: 160, y: 241, artistName: 'Yucca Stuff' },
+    { x: 212, y: 241, artistName: 'Yang Seung Jin' },
+    { x: 299, y: 208, artistName: 'Arthur Vallin' },
     // Add more pins as needed
   ];
 
@@ -192,9 +211,11 @@ function Map({ navigation }) {
                 style={styles.profileImage}
                 onError={(e) => console.log('Loading image failed', e.nativeEvent.error)}
               />
-              <Text style={styles.modalText}>{artistModalData.name}</Text>
-              <Text style={styles.modalText}>{artistModalData.bio}</Text>
-              <Text style={styles.modalText}>{artistModalData.location}</Text>
+              <Text style={styles.modalName}>{artistModalData.name}</Text>
+              <View style={styles.modalSeparator} />
+              <Text style={styles.modalBio}>{artistModalData.bio}</Text>
+              <View style={styles.modalSeparator} />
+              <Text style={styles.modalLocation}>{artistModalData.location}</Text>
               {/* Display other artist data as needed */}
             </>
           )}
