@@ -103,8 +103,8 @@ export default StyleSheet.create({
     borderRadius: 10,
   },
   articleTextContainer: {
-    alignItems: 'center',
-    marginTop: 16,
+    marginLeft: 16,
+    justifyContent: 'center',
   },
   artistName: {
     ...baseTextStyle,
