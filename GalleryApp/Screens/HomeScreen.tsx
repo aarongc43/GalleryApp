@@ -146,6 +146,7 @@ function HomeScreen({navigation}: HomeScreenProps) {
             ref={scrollViewRef}
             contentContainerStyle={styles.flatListContainer}
           />
+          <View style={styles.horizontalLine}></View>
           <View style={styles.indicatorContainer}>
             {artistProfiles.map((_, index) => (
               <TouchableOpacity
