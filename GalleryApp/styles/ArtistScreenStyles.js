@@ -33,13 +33,6 @@ export default StyleSheet.create({
     paddingHorizontal: 16,
     paddingTop: 16,
   },
-  Mellifloo_txt: {
-    ...baseTextStyle,
-    marginTop: -15,
-    marginLeft: 140,
-    fontSize: 20,
-    textAlign: 'center',
-  },
   Menu_txt: {
     ...baseTextStyle,
     marginTop: -15,

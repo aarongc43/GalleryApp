@@ -192,7 +192,9 @@ function Map({ navigation }) {
       <ScrollView>
         <View style={styles.container}>
           <View style={styles.textContainer}>
-            <Text style={styles.Mellifloo_txt}>Mellifloo</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <Text style={styles.Mellifloo_txt}>Mellifloo</Text>
+            </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('Menu')}>
               <Text style={styles.menuText}>Menu</Text>
             </TouchableOpacity>

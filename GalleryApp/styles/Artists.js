@@ -25,6 +25,11 @@ const textNY = {
   fontFamily: 'NY Irvin',
 };
 
+const baseTextStyle = {
+  fontFamily: 'ACaslonPro-Bold',
+  color: 'black',
+};
+
 const {width} = Dimensions.get('window');
 
 export default StyleSheet.create({
@@ -34,14 +39,14 @@ export default StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: '#a9a9a9',
     height: '100%',
-    paddingTop: 40,
+    paddingTop: 2,
     padding: 20,
     flex: 1,
   },
   textContainer: {
     width: '100%',
     justifyContent: 'flex-start',
-    marginTop: 20,
+    marginTop: 14,
   },
   menuButton: {
     alignSelf: 'flex-end',
@@ -65,6 +70,14 @@ export default StyleSheet.create({
   scrollViewContainer: {
     alignItems: 'center',
     padding: 20,
+  },
+  Mellifloo_txt: {
+    ...baseTextStyle,
+    marginTop: -15,
+    marginBottom: -20,
+    marginLeft: 15,
+    fontSize: 20,
+    textAlign: 'center',
   },
   Menu_txt: {
     marginLeft: 300,

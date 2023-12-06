@@ -115,6 +115,9 @@ function ArtistScreen({route, navigation}) {
 
   const renderHeader = () => (
     <View style={styles.textContainer}>
+      <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+        <Text style={styles.Mellifloo_txt}>Mellifloo</Text>
+      </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Menu')}>
         <Text style={styles.Menu_txt}>Menu</Text>
       </TouchableOpacity>

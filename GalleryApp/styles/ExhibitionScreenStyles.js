@@ -5,6 +5,10 @@ const baseTextStyle = {
   color: 'black',
 };
 
+const titleTextStyle = {
+  
+}
+
 const sharedStyles = StyleSheet.create({
   horizontalLine: {
     marginBottom: 10,
@@ -23,6 +27,7 @@ const sharedStyles = StyleSheet.create({
 export default StyleSheet.create({
   container: {
     flex: 1,
+    height: 150,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#a9a9a9',
@@ -32,10 +37,12 @@ export default StyleSheet.create({
     alignItems: 'flex-start',
     paddingHorizontal: 16,
     paddingTop: 16,
+    backgroundColor: '#a9a9a9',
   },
   Mellifloo_txt: {
     ...baseTextStyle,
     marginTop: -15,
+    marginBottom: -20,
     marginLeft: 140,
     fontSize: 20,
     textAlign: 'center',
@@ -58,7 +65,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '100%',
-    marginTop: 10,
+    marginTop: -5,
   },
   rowText: {
     ...baseTextStyle,
@@ -78,7 +85,7 @@ export default StyleSheet.create({
   horizontalLine: sharedStyles.horizontalLine,
   articleContainer: {
     width: '100%',
-    backgroundColor: '#fff',
+    backgroundColor: '#a9a9a9',
     borderBottomWidth: 1,
     borderBottomColor: '#eaeaea',
     paddingVertical: 20,
@@ -90,6 +97,7 @@ export default StyleSheet.create({
   articleTextContainer: {
     marginLeft: 16,
     justifyContent: 'center',
+
   },
   artistName: {
     ...baseTextStyle,
