@@ -35,13 +35,8 @@ export default StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-<<<<<<< HEAD
     paddingVertical: 20,
     paddingHorizontal: 16,
-=======
-    paddingVertical: 20, // Add vertical padding
-    paddingHorizontal: 16, // Add horizontal padding for screen edge spacing
->>>>>>> d2b8cfe5635e10aa18613d851134b04ac24d8c25
     backgroundColor: '#a9a9a9',
   },
   imageStyle: {
