@@ -34,7 +34,11 @@ function Map({ navigation }) {
       alignItems: 'flex-start',
     },
     titleText: {
-      // Your title text style here
+      marginTop: -10,
+      marginBottom: -60,
+      fontFamily: 'NY Irvin',
+      fontSize: 40,
+      color: 'black',
     },
     Mellifloo_txt: {
       marginLeft: 140,
@@ -141,16 +145,30 @@ function Map({ navigation }) {
       alignSelf: 'stretch',
       marginBottom: 5,
     },
+    Yeartext: {
+      marginBottom: -10,
+      marginLeft: -200,
+      fontFamily: 'ACaslonPro-Bold',
+      fontSize: 40,
+      color: 'black',
+    },
+    Subtext: {
+    marginBottom: 320,
+     fontFamily: 'ACaslonPro-Bold',
+     fontSize: 20,
+     color: 'black',
+     textAlign: 'justify',
+    },
     // Additional styles
   });
 
   const pins = [
-    { x: 60, y: 275, artistName: 'Arthur Vallin' },
-    { x: 151, y: 182, artistName: 'Haley Josephs' },
-    { x: 235, y: 182, artistName: 'Tafy LaPlanche' },
-    { x: 160, y: 241, artistName: 'Yucca Stuff' },
-    { x: 212, y: 241, artistName: 'Yang Seung Jin' },
-    { x: 299, y: 208, artistName: 'Arthur Vallin' },
+    { x: 60, y: 220, artistName: 'Arthur Vallin' },
+    { x: 151, y: 135, artistName: 'Haley Josephs' },
+    { x: 235, y: 135, artistName: 'Tafy LaPlanche' },
+    { x: 172, y: 170, artistName: 'Yucca Stuff' },
+    { x: 235, y: 170, artistName: 'Yang Seung Jin' },
+    { x: 295, y: 168, artistName: 'Arthur Vallin' },
     // Add more pins as needed
   ];
 
@@ -175,11 +193,11 @@ function Map({ navigation }) {
         <View style={styles.container}>
           <View style={styles.textContainer}>
             <Text style={styles.Mellifloo_txt}>Mellifloo</Text>
-            <Text style={styles.titleText}>Map</Text>
             <TouchableOpacity onPress={() => navigation.navigate('Menu')}>
               <Text style={styles.menuText}>Menu</Text>
             </TouchableOpacity>
             <View style={styles.horizontalLine}></View>
+            <Text style={styles.titleText}>Gallery</Text>
             <Image source={museumLayoutImage} style={styles.imageStyle} />
             {pins.map((pin, index) => (
               <TouchableOpacity
@@ -192,6 +210,12 @@ function Map({ navigation }) {
               </TouchableOpacity>
             ))}
           </View>
+          <Text style={styles.Yeartext}>Est. 2023</Text>
+          <Text style={styles.Subtext}>
+            Before visiting the gallery, visitors have the opportunity to know
+            the location of the specific art piece that are presented in our
+            exhibitions.
+          </Text>
         </View>
       </ScrollView>
 
