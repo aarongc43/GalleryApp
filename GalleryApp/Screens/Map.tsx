@@ -35,8 +35,8 @@ function Map({ navigation }) {
     },
     titleText: {
       marginTop: -10,
-      marginBottom: -75,
-      fontFamily: 'ACaslonPro-Bold',
+      marginBottom: -60,
+      fontFamily: 'NY Irvin',
       fontSize: 40,
       color: 'black',
     },
@@ -153,7 +153,7 @@ function Map({ navigation }) {
       color: 'black',
     },
     Subtext: {
-    marginBottom: 295,
+    marginBottom: 320,
      fontFamily: 'ACaslonPro-Bold',
      fontSize: 20,
      color: 'black',
@@ -163,12 +163,12 @@ function Map({ navigation }) {
   });
 
   const pins = [
-    { x: 60, y: 230, artistName: 'Arthur Vallin' },
-    { x: 151, y: 145, artistName: 'Haley Josephs' },
-    { x: 235, y: 145, artistName: 'Tafy LaPlanche' },
-    { x: 172, y: 180, artistName: 'Yucca Stuff' },
-    { x: 235, y: 180, artistName: 'Yang Seung Jin' },
-    { x: 295, y: 178, artistName: 'Arthur Vallin' },
+    { x: 60, y: 220, artistName: 'Arthur Vallin' },
+    { x: 151, y: 135, artistName: 'Haley Josephs' },
+    { x: 235, y: 135, artistName: 'Tafy LaPlanche' },
+    { x: 172, y: 170, artistName: 'Yucca Stuff' },
+    { x: 235, y: 170, artistName: 'Yang Seung Jin' },
+    { x: 295, y: 168, artistName: 'Arthur Vallin' },
     // Add more pins as needed
   ];
 
