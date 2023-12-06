@@ -5,9 +5,10 @@ const baseTextStyle = {
   color: 'black',
 };
 
-const titleTextStyle = {
-  
-}
+const textNY = {
+  fontSize: 24,
+  fontFamily: 'NY Irvin',
+};
 
 const sharedStyles = StyleSheet.create({
   horizontalLine: {
@@ -61,10 +62,10 @@ export default StyleSheet.create({
     color: '#7E7E7E',
   },
   Exhibitions_txt: {
-    ...baseTextStyle,
+    ...textNY,
     fontSize: 40,
     marginTop: -10,
-    marginBottom: -10,
+    marginBottom: 5,
   },
   rowContainer: {
     flexDirection: 'row',
