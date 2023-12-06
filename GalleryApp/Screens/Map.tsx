@@ -161,7 +161,7 @@ function Map({ navigation }) {
     },
     // Additional styles
   });
-
+//test
   const pins = [
     { x: 60, y: 250, artistName: 'Arthur Vallin' },
     { x: 160, y: 142, artistName: 'Haley Josephs' },
