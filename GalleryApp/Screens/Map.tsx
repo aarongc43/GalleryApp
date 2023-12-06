@@ -237,7 +237,9 @@ function Map({ navigation }) {
                 style={styles.profileImage}
                 onError={(e) => console.log('Loading image failed', e.nativeEvent.error)}
               />
+                <TouchableOpacity onPress={() => navigation.navigate('Artists', {artistName: artistModalData.name})}>
               <Text style={styles.modalName}>{artistModalData.name}</Text>
+              </TouchableOpacity>
               <View style={styles.modalSeparator} />
               <Text style={styles.modalBio}>{artistModalData.bio}</Text>
               <View style={styles.modalSeparator} />
