@@ -9,7 +9,9 @@ import {
   StyleSheet,
   Modal,
 } from 'react-native';
-import { fetchArtistProfile } from './ArtistProfile';
+import { fetchArtistProfilePage } from './ArtistProfile';
+
+import storage from '@react-native-firebase/storage';
 
 const museumLayoutImage = require('../assets/fonts/map_layout1.jpg');
 const pinImage = require('../assets/fonts/pin.png')
@@ -80,9 +82,13 @@ function Map({ navigation }) {
       height: 15,
     },
     modalView: {
-      margin: 20,
+      position: 'absolute',
+      bottom: 0, // Positions the modal at the bottom
+      left: 0,
+      right: 0,
       backgroundColor: 'white',
-      borderRadius: 20,
+      borderTopLeftRadius: 20,
+      borderTopRightRadius: 20,
       padding: 35,
       alignItems: 'center',
       shadowColor: '#000',
@@ -116,26 +122,47 @@ function Map({ navigation }) {
       fontWeight: 'bold',
       textAlign: 'center',
     },
+    modalName: {
+      fontWeight: 'bold',
+      fontSize: 20,
+      marginBottom: 5,
+    },
+    modalBio: {
+      fontSize: 16,
+      marginBottom: 5,
+    },
+    modalLocation: {
+      fontSize: 16,
+      marginBottom: 5,
+    },
+    modalSeparator: {
+      height: 2,
+      backgroundColor: '#D9D9D9',
+      alignSelf: 'stretch',
+      marginBottom: 5,
+    },
     // Additional styles
   });
 
   const pins = [
     { x: 60, y: 275, artistName: 'Arthur Vallin' },
-    { x: 151, y: 182, exhibitionId: 'exhibition1', artistName: 'Haley Josephs' },
-    { x: 235, y: 182, exhibitionId: 'exhibition1', artistName: 'Tafy LaPlanche' },
-    { x: 160, y: 241, exhibitionId: 'exhibition1', artistName: 'Yucca Stuff' },
-    { x: 212, y: 241, exhibitionId: 'exhibition1', artistName: 'Yang Seung Jin' },
-    { x: 299, y: 208, exhibitionId: 'exhibition1', artistName: 'Arthur Vallin' },
+    { x: 151, y: 182, artistName: 'Haley Josephs' },
+    { x: 235, y: 182, artistName: 'Tafy LaPlanche' },
+    { x: 160, y: 241, artistName: 'Yucca Stuff' },
+    { x: 212, y: 241, artistName: 'Yang Seung Jin' },
+    { x: 299, y: 208, artistName: 'Arthur Vallin' },
     // Add more pins as needed
   ];
 
   const handlePinPress = async (pin) => {
     try {
-      const artistData = await fetchArtistProfile(pin.artistName);
-      if (artistData) {
-        setArtistModalData(artistData);
+      const artistData = await fetchArtistProfilePage(pin.artistName); // or fetchArtistProfile
+      if (artistData && artistData.profilePhoto) {
+        // Fetch the actual download URL for the profile photo
+        const profilePhotoUrl = await storage().ref(artistData.profilePhoto).getDownloadURL();
+        setArtistModalData({ ...artistData, profilePhoto: profilePhotoUrl });
       } else {
-        console.error('Artist data not found for:', pin.artistName);
+        console.error('Artist profile photo not found for:', pin.artistName);
       }
     } catch (error) {
       console.error('Error fetching artist data:', error);
@@ -177,14 +204,21 @@ function Map({ navigation }) {
         }}
       >
         <View style={styles.modalView}>
-          <Image
-            source={{ uri: artistModalData?.profilePhoto }}
-            style={styles.profileImage}
-          />
-          <Text style={styles.modalText}>{artistModalData?.name}</Text>
-          <Text style={styles.modalText}>{artistModalData?.bio}</Text>
-          <Text style={styles.modalText}>{artistModalData?.location}</Text>
-          {/* Display other artist data as needed */}
+          {artistModalData && (
+            <>
+              <Image
+                source={{ uri: artistModalData.profilePhoto }}
+                style={styles.profileImage}
+                onError={(e) => console.log('Loading image failed', e.nativeEvent.error)}
+              />
+              <Text style={styles.modalName}>{artistModalData.name}</Text>
+              <View style={styles.modalSeparator} />
+              <Text style={styles.modalBio}>{artistModalData.bio}</Text>
+              <View style={styles.modalSeparator} />
+              <Text style={styles.modalLocation}>{artistModalData.location}</Text>
+              {/* Display other artist data as needed */}
+            </>
+          )}
           <TouchableOpacity
             style={styles.button}
             onPress={() => setArtistModalData(null)}
