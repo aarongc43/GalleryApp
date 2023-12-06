@@ -163,12 +163,12 @@ function Map({ navigation }) {
   });
 
   const pins = [
-    { x: 60, y: 220, artistName: 'Arthur Vallin' },
-    { x: 151, y: 135, artistName: 'Haley Josephs' },
-    { x: 235, y: 135, artistName: 'Tafy LaPlanche' },
-    { x: 172, y: 170, artistName: 'Yucca Stuff' },
-    { x: 235, y: 170, artistName: 'Yang Seung Jin' },
-    { x: 295, y: 168, artistName: 'Arthur Vallin' },
+    { x: 60, y: 250, artistName: 'Arthur Vallin' },
+    { x: 160, y: 142, artistName: 'Haley Josephs' },
+    { x: 250, y: 142, artistName: 'Tafy LaPlanche' },
+    { x: 177, y: 175, artistName: 'Yucca Stuff' },
+    { x: 248, y: 175, artistName: 'Yang Seung Jin' },
+    { x: 300, y: 168, artistName: 'Arthur Vallin' },
     // Add more pins as needed
   ];
 
