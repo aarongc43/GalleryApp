@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {
   SafeAreaView,
-  ScrollView,
   Text,
+  ScrollView,
   TouchableOpacity,
   View,
   Image,
@@ -10,7 +10,7 @@ import {
 import {FlatList} from 'react-native-gesture-handler';
 import storage from '@react-native-firebase/storage';
 
-import {fetchArtistProfile} from './ArtistProfile';
+import {fetchArtistProfilePage} from './ArtistProfile';
 import styles from '../styles/ExhibitionScreenStyles';
 
 const Exhibitions = ({navigation}) => {
@@ -33,17 +33,28 @@ const Exhibitions = ({navigation}) => {
       const fetchedArticles = await Promise.all(
         artistArticles.map(async artistName => {
           try {
-            const artistProfile = await fetchArtistProfile(artistName);
-            const randomExhibitionIndex = Math.floor(Math.random() * artistProfile.exhibitions.length);
-            const exhibition = artistProfile.exhibitions[randomExhibitionIndex];
-            const randomPieceIndex = Math.floor(Math.random() * exhibition.pieces.length);
-            const piece = exhibition.pieces[randomPieceIndex];
-            const imageUrl = await storage().ref(piece.imageName).getDownloadURL();
+            const artistProfile = await fetchArtistProfilePage(artistName);
+
+            if (!artistProfile.exhibitions || artistProfile.exhibitions.length === 0) {
+              console.warn(`No exhibitions found for artist: ${artistName}`);
+              return null;
+            }
+
+            const chosenExhibition = artistProfile.exhibitions[0]; // Access first exhibition
+
+            // Check if exhibition has pieces before accessing image
+            if (!chosenExhibition.pieces || chosenExhibition.pieces.length === 0) {
+              console.warn(`No pieces found for exhibition: ${chosenExhibition.exhibitionName}`);
+              return null;
+            }
+
+            const chosenPiece = chosenExhibition.pieces[0]; // Access first piece of art
+            const imageUrl = await storage().ref(chosenPiece.imageName).getDownloadURL();
 
             return {
               articleImage: imageUrl,
               articleName: artistProfile.name,
-              articleExhibitionName: exhibition['exhibitionName'],
+              articleExhibitionName: chosenExhibition.exhibitionName,
             };
           } catch (error) {
             console.error('Error fetching article:', error);
@@ -88,24 +99,20 @@ const Exhibitions = ({navigation}) => {
   );
 
   const renderArticleItem = ({item}) => (
-    <ScrollView>
-      <View style={styles.container}>
-        <TouchableOpacity onPress={() => navigation.navigate('Artists', { artistName: item.articleName })}>
-          <View style={styles.articleContainer}>
-            {item.articleImage ? (
-              <Image source={{ uri: item.articleImage }} style={styles.imageStyle} />
-            ) : (
-                // Consider adding a placeholder image or a view here
-                <Text>No image available</Text>
-              )}
-            <View style={styles.textInfoContainer}>
-              <Text style={styles.artistName}>{item.articleName}</Text>
-              <Text style={styles.exhibitionName}>{item.articleExhibitionName}</Text>
-            </View>
-          </View>
-        </TouchableOpacity>
+    <TouchableOpacity onPress={() => navigation.navigate('Artists', { artistName: item.articleName })}>
+      <View style={styles.articleContainer}>
+        {item.articleImage ? (
+          <Image source={{uri: item.articleImage}} style={styles.articleImage} />
+        ) : (
+            // Placeholder image or view
+            <Text>No image available</Text>
+          )}
+        <View style={styles.textInfoContainer}>
+          <Text style={styles.artistName}>{item.articleName}</Text>
+          <Text style={styles.articleExhibitionName}>{item.articleExhibitionName}</Text>
+        </View>
       </View>
-    </ScrollView>
+    </TouchableOpacity>
   );
 
   return (

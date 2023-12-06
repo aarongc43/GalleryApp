@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
 const baseTextStyle = {
   fontFamily: 'ACaslonPro-Bold',
@@ -8,7 +8,7 @@ const baseTextStyle = {
 const sharedStyles = StyleSheet.create({
   horizontalLine: {
     marginBottom: 10,
-    width: '100%', // Adjusted for full width
+    width: '100%',
     borderBottomColor: '#D9D9D9',
     borderBottomWidth: 1,
   },
@@ -39,6 +39,11 @@ export default StyleSheet.create({
     marginLeft: 140,
     fontSize: 20,
     textAlign: 'center',
+  },
+  articleExhibitionName: {
+    ...baseTextStyle,
+    color: '#555',
+    marginTop: 4,
   },
   Menu_txt: {
     ...baseTextStyle,
@@ -83,13 +88,16 @@ export default StyleSheet.create({
     borderBottomColor: '#eaeaea',
     paddingVertical: 20,
     paddingHorizontal: 16,
-    flexDirection: 'row',
-    alignItems: 'center',
   },
-  articleImage: sharedStyles.imageStyle,
+  articleImage: {
+    width: '100%',
+    height: 200,
+    resizeMode: 'cover',
+    borderRadius: 10,
+  },
   articleTextContainer: {
-    marginLeft: 16,
-    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 16,
   },
   artistName: {
     ...baseTextStyle,
@@ -106,4 +114,3 @@ export default StyleSheet.create({
     fontFamily: 'ACaslonPro-Regular',
   },
 });
-

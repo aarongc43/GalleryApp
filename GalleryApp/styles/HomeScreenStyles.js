@@ -30,9 +30,9 @@ export default StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 20, // Add vertical padding
-    paddingHorizontal: 16, // Add horizontal padding for screen edge spacing
-    backgroundColor: '#fff',
+    paddingVertical: 20,
+    paddingHorizontal: 16,
+    backgroundColor: '#a9a9a9',
   },
   imageStyle: {
     width: '100%',

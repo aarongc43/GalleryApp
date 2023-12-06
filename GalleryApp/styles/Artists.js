@@ -124,11 +124,11 @@ export default StyleSheet.create({
     color: 'gray',
   },
   profilePhoto: {
-    width: width * 0.8, // Adjust width as needed
-    height: width * 0.8, // Adjust height as needed
-    borderRadius: (width * 0.8) / 2, // Circular image
-    alignSelf: 'center', // Center align in the view
-    marginVetical: 10, // Margin bottom
+    width: width * 0.8,
+    height: width * 0.8,
+    borderRadius: (width * 0.8) / 2,
+    alignSelf: 'center',
+    marginVertical: 10,
     borderWidth: 2,
     borderColor: '#333',
   },
