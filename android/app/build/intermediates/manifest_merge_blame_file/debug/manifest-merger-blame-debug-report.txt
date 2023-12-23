@@ -1,0 +1,364 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.galleryapp"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+9        android:targetSdkVersion="33" />
+10
+11    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+11-->/Users/aaron/Projects/GalleryApp/GalleryApp/android/app/src/debug/AndroidManifest.xml:5:5-77
+11-->/Users/aaron/Projects/GalleryApp/GalleryApp/android/app/src/debug/AndroidManifest.xml:5:22-75
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->/Users/aaron/Projects/GalleryApp/GalleryApp/android/app/src/main/AndroidManifest.xml:3:5-67
+12-->/Users/aaron/Projects/GalleryApp/GalleryApp/android/app/src/main/AndroidManifest.xml:3:22-64
+13    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+13-->[com.facebook.flipper:flipper:0.182.0] /Users/aaron/.gradle/caches/transforms-3/426f122c987f1f036bd238635db2dd0e/transformed/jetified-flipper-0.182.0/AndroidManifest.xml:16:5-76
+13-->[com.facebook.flipper:flipper:0.182.0] /Users/aaron/.gradle/caches/transforms-3/426f122c987f1f036bd238635db2dd0e/transformed/jetified-flipper-0.182.0/AndroidManifest.xml:16:22-73
+14    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+14-->[:react-native-firebase_analytics] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/analytics/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:7:5-79
+14-->[:react-native-firebase_analytics] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/analytics/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:7:22-76
+15    <uses-permission android:name="android.permission.WAKE_LOCK" />
+15-->[:react-native-firebase_analytics] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/analytics/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-68
+15-->[:react-native-firebase_analytics] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/analytics/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:22-65
+16    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+16-->[com.google.android.gms:play-services-measurement-api:21.5.0] /Users/aaron/.gradle/caches/transforms-3/f4819810a308322aa0d0539da4b49ba0/transformed/jetified-play-services-measurement-api-21.5.0/AndroidManifest.xml:25:5-79
+16-->[com.google.android.gms:play-services-measurement-api:21.5.0] /Users/aaron/.gradle/caches/transforms-3/f4819810a308322aa0d0539da4b49ba0/transformed/jetified-play-services-measurement-api-21.5.0/AndroidManifest.xml:25:22-76
+17    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_ATTRIBUTION" />
+17-->[com.google.android.gms:play-services-measurement-api:21.5.0] /Users/aaron/.gradle/caches/transforms-3/f4819810a308322aa0d0539da4b49ba0/transformed/jetified-play-services-measurement-api-21.5.0/AndroidManifest.xml:26:5-88
+17-->[com.google.android.gms:play-services-measurement-api:21.5.0] /Users/aaron/.gradle/caches/transforms-3/f4819810a308322aa0d0539da4b49ba0/transformed/jetified-play-services-measurement-api-21.5.0/AndroidManifest.xml:26:22-85
+18    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_AD_ID" />
+18-->[com.google.android.gms:play-services-measurement-api:21.5.0] /Users/aaron/.gradle/caches/transforms-3/f4819810a308322aa0d0539da4b49ba0/transformed/jetified-play-services-measurement-api-21.5.0/AndroidManifest.xml:27:5-82
+18-->[com.google.android.gms:play-services-measurement-api:21.5.0] /Users/aaron/.gradle/caches/transforms-3/f4819810a308322aa0d0539da4b49ba0/transformed/jetified-play-services-measurement-api-21.5.0/AndroidManifest.xml:27:22-79
+19    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+19-->[com.google.android.gms:play-services-measurement:21.5.0] /Users/aaron/.gradle/caches/transforms-3/bc302d6e0aa6d01823d74b2f569e33a3/transformed/jetified-play-services-measurement-21.5.0/AndroidManifest.xml:26:5-110
+19-->[com.google.android.gms:play-services-measurement:21.5.0] /Users/aaron/.gradle/caches/transforms-3/bc302d6e0aa6d01823d74b2f569e33a3/transformed/jetified-play-services-measurement-21.5.0/AndroidManifest.xml:26:22-107
+20
+21    <permission
+21-->[androidx.core:core:1.9.0] /Users/aaron/.gradle/caches/transforms-3/d33e9b367f5ae5e8ee054e461d7d82e3/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
+22        android:name="com.galleryapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+22-->[androidx.core:core:1.9.0] /Users/aaron/.gradle/caches/transforms-3/d33e9b367f5ae5e8ee054e461d7d82e3/transformed/core-1.9.0/AndroidManifest.xml:23:9-81
+23        android:protectionLevel="signature" />
+23-->[androidx.core:core:1.9.0] /Users/aaron/.gradle/caches/transforms-3/d33e9b367f5ae5e8ee054e461d7d82e3/transformed/core-1.9.0/AndroidManifest.xml:24:9-44
+24
+25    <uses-permission android:name="com.galleryapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+25-->[androidx.core:core:1.9.0] /Users/aaron/.gradle/caches/transforms-3/d33e9b367f5ae5e8ee054e461d7d82e3/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
+25-->[androidx.core:core:1.9.0] /Users/aaron/.gradle/caches/transforms-3/d33e9b367f5ae5e8ee054e461d7d82e3/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
+26
+27    <application
+27-->/Users/aaron/Projects/GalleryApp/GalleryApp/android/app/src/main/AndroidManifest.xml:5:5-24:19
+28        android:name="com.galleryapp.MainApplication"
+28-->/Users/aaron/Projects/GalleryApp/GalleryApp/android/app/src/main/AndroidManifest.xml:6:7-38
+29        android:allowBackup="false"
+29-->/Users/aaron/Projects/GalleryApp/GalleryApp/android/app/src/main/AndroidManifest.xml:10:7-34
+30        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+30-->[androidx.core:core:1.9.0] /Users/aaron/.gradle/caches/transforms-3/d33e9b367f5ae5e8ee054e461d7d82e3/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
+31        android:debuggable="true"
+32        android:icon="@mipmap/ic_launcher"
+32-->/Users/aaron/Projects/GalleryApp/GalleryApp/android/app/src/main/AndroidManifest.xml:8:7-41
+33        android:label="@string/app_name"
+33-->/Users/aaron/Projects/GalleryApp/GalleryApp/android/app/src/main/AndroidManifest.xml:7:7-39
+34        android:roundIcon="@mipmap/ic_launcher_round"
+34-->/Users/aaron/Projects/GalleryApp/GalleryApp/android/app/src/main/AndroidManifest.xml:9:7-52
+35        android:theme="@style/AppTheme"
+35-->/Users/aaron/Projects/GalleryApp/GalleryApp/android/app/src/main/AndroidManifest.xml:11:7-38
+36        android:usesCleartextTraffic="true" >
+36-->/Users/aaron/Projects/GalleryApp/GalleryApp/android/app/src/debug/AndroidManifest.xml:8:9-44
+37        <activity
+37-->/Users/aaron/Projects/GalleryApp/GalleryApp/android/app/src/debug/AndroidManifest.xml:11:9-111
+38            android:name="com.facebook.react.devsupport.DevSettingsActivity"
+38-->/Users/aaron/Projects/GalleryApp/GalleryApp/android/app/src/debug/AndroidManifest.xml:11:19-83
+39            android:exported="false" />
+39-->/Users/aaron/Projects/GalleryApp/GalleryApp/android/app/src/debug/AndroidManifest.xml:11:84-108
+40        <activity
+40-->/Users/aaron/Projects/GalleryApp/GalleryApp/android/app/src/main/AndroidManifest.xml:12:7-23:18
+41            android:name="com.galleryapp.MainActivity"
+41-->/Users/aaron/Projects/GalleryApp/GalleryApp/android/app/src/main/AndroidManifest.xml:13:9-37
+42            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+42-->/Users/aaron/Projects/GalleryApp/GalleryApp/android/app/src/main/AndroidManifest.xml:15:9-118
+43            android:exported="true"
+43-->/Users/aaron/Projects/GalleryApp/GalleryApp/android/app/src/main/AndroidManifest.xml:18:9-32
+44            android:label="@string/app_name"
+44-->/Users/aaron/Projects/GalleryApp/GalleryApp/android/app/src/main/AndroidManifest.xml:14:9-41
+45            android:launchMode="singleTask"
+45-->/Users/aaron/Projects/GalleryApp/GalleryApp/android/app/src/main/AndroidManifest.xml:16:9-40
+46            android:windowSoftInputMode="adjustResize" >
+46-->/Users/aaron/Projects/GalleryApp/GalleryApp/android/app/src/main/AndroidManifest.xml:17:9-51
+47            <intent-filter>
+47-->/Users/aaron/Projects/GalleryApp/GalleryApp/android/app/src/main/AndroidManifest.xml:19:9-22:25
+48                <action android:name="android.intent.action.MAIN" />
+48-->/Users/aaron/Projects/GalleryApp/GalleryApp/android/app/src/main/AndroidManifest.xml:20:13-65
+48-->/Users/aaron/Projects/GalleryApp/GalleryApp/android/app/src/main/AndroidManifest.xml:20:21-62
+49
+50                <category android:name="android.intent.category.LAUNCHER" />
+50-->/Users/aaron/Projects/GalleryApp/GalleryApp/android/app/src/main/AndroidManifest.xml:21:13-73
+50-->/Users/aaron/Projects/GalleryApp/GalleryApp/android/app/src/main/AndroidManifest.xml:21:23-70
+51            </intent-filter>
+52        </activity>
+53
+54        <meta-data
+54-->[:react-native-firebase_analytics] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/analytics/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:12:9-14:36
+55            android:name="firebase_analytics_collection_enabled"
+55-->[:react-native-firebase_analytics] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/analytics/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-65
+56            android:value="true" />
+56-->[:react-native-firebase_analytics] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/analytics/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:13-33
+57        <meta-data
+57-->[:react-native-firebase_analytics] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/analytics/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:9-17:37
+58            android:name="firebase_analytics_collection_deactivated"
+58-->[:react-native-firebase_analytics] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/analytics/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:16:13-69
+59            android:value="false" />
+59-->[:react-native-firebase_analytics] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/analytics/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:17:13-34
+60        <meta-data
+60-->[:react-native-firebase_analytics] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/analytics/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:18:9-20:36
+61            android:name="google_analytics_adid_collection_enabled"
+61-->[:react-native-firebase_analytics] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/analytics/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:19:13-68
+62            android:value="true" />
+62-->[:react-native-firebase_analytics] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/analytics/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:20:13-33
+63        <meta-data
+63-->[:react-native-firebase_analytics] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/analytics/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:21:9-23:36
+64            android:name="google_analytics_ssaid_collection_enabled"
+64-->[:react-native-firebase_analytics] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/analytics/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:22:13-69
+65            android:value="true" />
+65-->[:react-native-firebase_analytics] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/analytics/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:23:13-33
+66        <meta-data
+66-->[:react-native-firebase_analytics] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/analytics/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:24:9-26:36
+67            android:name="google_analytics_default_allow_ad_personalization_signals"
+67-->[:react-native-firebase_analytics] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/analytics/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:25:13-85
+68            android:value="true" />
+68-->[:react-native-firebase_analytics] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/analytics/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:26:13-33
+69        <meta-data
+69-->[:react-native-firebase_analytics] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/analytics/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:27:9-29:36
+70            android:name="google_analytics_automatic_screen_reporting_enabled"
+70-->[:react-native-firebase_analytics] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/analytics/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:28:13-79
+71            android:value="true" />
+71-->[:react-native-firebase_analytics] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/analytics/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:29:13-33
+72        <meta-data
+72-->[:react-native-firebase_app] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:9-11:36
+73            android:name="app_data_collection_default_enabled"
+73-->[:react-native-firebase_app] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:13-63
+74            android:value="true" />
+74-->[:react-native-firebase_app] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-33
+75
+76        <service
+76-->[:react-native-firebase_app] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:13:9-21:19
+77            android:name="com.google.firebase.components.ComponentDiscoveryService"
+77-->[:react-native-firebase_app] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:13-84
+78            android:directBootAware="true"
+78-->[:react-native-firebase_app] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:13-43
+79            android:exported="false" >
+79-->[:react-native-firebase_app] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:16:13-37
+80            <meta-data
+80-->[:react-native-firebase_app] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:18:13-20:85
+81                android:name="com.google.firebase.components:io.invertase.firebase.app.ReactNativeFirebaseAppRegistrar"
+81-->[:react-native-firebase_app] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:19:17-120
+82                android:value="com.google.firebase.components.ComponentRegistrar" />
+82-->[:react-native-firebase_app] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:20:17-82
+83            <meta-data
+83-->[com.google.firebase:firebase-firestore:24.9.1] /Users/aaron/.gradle/caches/transforms-3/1beeca5841543cb42babadedf6799b61/transformed/jetified-firebase-firestore-24.9.1/AndroidManifest.xml:17:13-19:85
+84                android:name="com.google.firebase.components:com.google.firebase.firestore.FirebaseFirestoreKtxRegistrar"
+84-->[com.google.firebase:firebase-firestore:24.9.1] /Users/aaron/.gradle/caches/transforms-3/1beeca5841543cb42babadedf6799b61/transformed/jetified-firebase-firestore-24.9.1/AndroidManifest.xml:18:17-122
+85                android:value="com.google.firebase.components.ComponentRegistrar" />
+85-->[com.google.firebase:firebase-firestore:24.9.1] /Users/aaron/.gradle/caches/transforms-3/1beeca5841543cb42babadedf6799b61/transformed/jetified-firebase-firestore-24.9.1/AndroidManifest.xml:19:17-82
+86            <meta-data
+86-->[com.google.firebase:firebase-firestore:24.9.1] /Users/aaron/.gradle/caches/transforms-3/1beeca5841543cb42babadedf6799b61/transformed/jetified-firebase-firestore-24.9.1/AndroidManifest.xml:20:13-22:85
+87                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+87-->[com.google.firebase:firebase-firestore:24.9.1] /Users/aaron/.gradle/caches/transforms-3/1beeca5841543cb42babadedf6799b61/transformed/jetified-firebase-firestore-24.9.1/AndroidManifest.xml:21:17-111
+88                android:value="com.google.firebase.components.ComponentRegistrar" />
+88-->[com.google.firebase:firebase-firestore:24.9.1] /Users/aaron/.gradle/caches/transforms-3/1beeca5841543cb42babadedf6799b61/transformed/jetified-firebase-firestore-24.9.1/AndroidManifest.xml:22:17-82
+89            <meta-data
+89-->[com.google.firebase:firebase-storage:20.3.0] /Users/aaron/.gradle/caches/transforms-3/7db16fafd0159a1212ade72c4913ef68/transformed/jetified-firebase-storage-20.3.0/AndroidManifest.xml:30:13-32:85
+90                android:name="com.google.firebase.components:com.google.firebase.storage.FirebaseStorageKtxRegistrar"
+90-->[com.google.firebase:firebase-storage:20.3.0] /Users/aaron/.gradle/caches/transforms-3/7db16fafd0159a1212ade72c4913ef68/transformed/jetified-firebase-storage-20.3.0/AndroidManifest.xml:31:17-118
+91                android:value="com.google.firebase.components.ComponentRegistrar" />
+91-->[com.google.firebase:firebase-storage:20.3.0] /Users/aaron/.gradle/caches/transforms-3/7db16fafd0159a1212ade72c4913ef68/transformed/jetified-firebase-storage-20.3.0/AndroidManifest.xml:32:17-82
+92            <meta-data
+92-->[com.google.firebase:firebase-storage:20.3.0] /Users/aaron/.gradle/caches/transforms-3/7db16fafd0159a1212ade72c4913ef68/transformed/jetified-firebase-storage-20.3.0/AndroidManifest.xml:33:13-35:85
+93                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
+93-->[com.google.firebase:firebase-storage:20.3.0] /Users/aaron/.gradle/caches/transforms-3/7db16fafd0159a1212ade72c4913ef68/transformed/jetified-firebase-storage-20.3.0/AndroidManifest.xml:34:17-107
+94                android:value="com.google.firebase.components.ComponentRegistrar" />
+94-->[com.google.firebase:firebase-storage:20.3.0] /Users/aaron/.gradle/caches/transforms-3/7db16fafd0159a1212ade72c4913ef68/transformed/jetified-firebase-storage-20.3.0/AndroidManifest.xml:35:17-82
+95            <meta-data
+95-->[com.google.firebase:firebase-appcheck:17.1.1] /Users/aaron/.gradle/caches/transforms-3/4ff3737b4fce021e235145e7f98d3782/transformed/jetified-firebase-appcheck-17.1.1/AndroidManifest.xml:25:13-27:85
+96                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckKtxRegistrar"
+96-->[com.google.firebase:firebase-appcheck:17.1.1] /Users/aaron/.gradle/caches/transforms-3/4ff3737b4fce021e235145e7f98d3782/transformed/jetified-firebase-appcheck-17.1.1/AndroidManifest.xml:26:17-120
+97                android:value="com.google.firebase.components.ComponentRegistrar" />
+97-->[com.google.firebase:firebase-appcheck:17.1.1] /Users/aaron/.gradle/caches/transforms-3/4ff3737b4fce021e235145e7f98d3782/transformed/jetified-firebase-appcheck-17.1.1/AndroidManifest.xml:27:17-82
+98            <meta-data
+98-->[com.google.firebase:firebase-appcheck:17.1.1] /Users/aaron/.gradle/caches/transforms-3/4ff3737b4fce021e235145e7f98d3782/transformed/jetified-firebase-appcheck-17.1.1/AndroidManifest.xml:28:13-30:85
+99                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckRegistrar"
+99-->[com.google.firebase:firebase-appcheck:17.1.1] /Users/aaron/.gradle/caches/transforms-3/4ff3737b4fce021e235145e7f98d3782/transformed/jetified-firebase-appcheck-17.1.1/AndroidManifest.xml:29:17-117
+100                android:value="com.google.firebase.components.ComponentRegistrar" />
+100-->[com.google.firebase:firebase-appcheck:17.1.1] /Users/aaron/.gradle/caches/transforms-3/4ff3737b4fce021e235145e7f98d3782/transformed/jetified-firebase-appcheck-17.1.1/AndroidManifest.xml:30:17-82
+101            <meta-data
+101-->[com.google.android.gms:play-services-measurement-api:21.5.0] /Users/aaron/.gradle/caches/transforms-3/f4819810a308322aa0d0539da4b49ba0/transformed/jetified-play-services-measurement-api-21.5.0/AndroidManifest.xml:37:13-39:85
+102                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+102-->[com.google.android.gms:play-services-measurement-api:21.5.0] /Users/aaron/.gradle/caches/transforms-3/f4819810a308322aa0d0539da4b49ba0/transformed/jetified-play-services-measurement-api-21.5.0/AndroidManifest.xml:38:17-139
+103                android:value="com.google.firebase.components.ComponentRegistrar" />
+103-->[com.google.android.gms:play-services-measurement-api:21.5.0] /Users/aaron/.gradle/caches/transforms-3/f4819810a308322aa0d0539da4b49ba0/transformed/jetified-play-services-measurement-api-21.5.0/AndroidManifest.xml:39:17-82
+104            <meta-data
+104-->[com.google.firebase:firebase-installations:17.2.0] /Users/aaron/.gradle/caches/transforms-3/818bc5a1eac6d8ab9505505399cbae8e/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:15:13-17:85
+105                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsKtxRegistrar"
+105-->[com.google.firebase:firebase-installations:17.2.0] /Users/aaron/.gradle/caches/transforms-3/818bc5a1eac6d8ab9505505399cbae8e/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:16:17-130
+106                android:value="com.google.firebase.components.ComponentRegistrar" />
+106-->[com.google.firebase:firebase-installations:17.2.0] /Users/aaron/.gradle/caches/transforms-3/818bc5a1eac6d8ab9505505399cbae8e/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:17:17-82
+107            <meta-data
+107-->[com.google.firebase:firebase-installations:17.2.0] /Users/aaron/.gradle/caches/transforms-3/818bc5a1eac6d8ab9505505399cbae8e/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:18:13-20:85
+108                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+108-->[com.google.firebase:firebase-installations:17.2.0] /Users/aaron/.gradle/caches/transforms-3/818bc5a1eac6d8ab9505505399cbae8e/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:19:17-127
+109                android:value="com.google.firebase.components.ComponentRegistrar" />
+109-->[com.google.firebase:firebase-installations:17.2.0] /Users/aaron/.gradle/caches/transforms-3/818bc5a1eac6d8ab9505505399cbae8e/transformed/jetified-firebase-installations-17.2.0/AndroidManifest.xml:20:17-82
+110            <meta-data
+110-->[com.google.firebase:firebase-common-ktx:20.4.2] /Users/aaron/.gradle/caches/transforms-3/75674215fde5ca8f919c2418ed88ca0a/transformed/jetified-firebase-common-ktx-20.4.2/AndroidManifest.xml:12:13-14:85
+111                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar"
+111-->[com.google.firebase:firebase-common-ktx:20.4.2] /Users/aaron/.gradle/caches/transforms-3/75674215fde5ca8f919c2418ed88ca0a/transformed/jetified-firebase-common-ktx-20.4.2/AndroidManifest.xml:13:17-116
+112                android:value="com.google.firebase.components.ComponentRegistrar" />
+112-->[com.google.firebase:firebase-common-ktx:20.4.2] /Users/aaron/.gradle/caches/transforms-3/75674215fde5ca8f919c2418ed88ca0a/transformed/jetified-firebase-common-ktx-20.4.2/AndroidManifest.xml:14:17-82
+113            <meta-data
+113-->[com.google.firebase:firebase-common:20.4.2] /Users/aaron/.gradle/caches/transforms-3/03f67cfbcf95f87693a92c0410f9793e/transformed/jetified-firebase-common-20.4.2/AndroidManifest.xml:35:13-37:85
+114                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
+114-->[com.google.firebase:firebase-common:20.4.2] /Users/aaron/.gradle/caches/transforms-3/03f67cfbcf95f87693a92c0410f9793e/transformed/jetified-firebase-common-20.4.2/AndroidManifest.xml:36:17-109
+115                android:value="com.google.firebase.components.ComponentRegistrar" />
+115-->[com.google.firebase:firebase-common:20.4.2] /Users/aaron/.gradle/caches/transforms-3/03f67cfbcf95f87693a92c0410f9793e/transformed/jetified-firebase-common-20.4.2/AndroidManifest.xml:37:17-82
+116        </service>
+117
+118        <provider
+118-->[:react-native-firebase_app] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:23:9-27:38
+119            android:name="io.invertase.firebase.app.ReactNativeFirebaseAppInitProvider"
+119-->[:react-native-firebase_app] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:24:13-88
+120            android:authorities="com.galleryapp.reactnativefirebaseappinitprovider"
+120-->[:react-native-firebase_app] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:25:13-86
+121            android:exported="false"
+121-->[:react-native-firebase_app] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:26:13-37
+122            android:initOrder="99" />
+122-->[:react-native-firebase_app] /Users/aaron/Projects/GalleryApp/GalleryApp/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:27:13-35
+123
+124        <property
+124-->[com.google.android.gms:play-services-measurement-api:21.5.0] /Users/aaron/.gradle/caches/transforms-3/f4819810a308322aa0d0539da4b49ba0/transformed/jetified-play-services-measurement-api-21.5.0/AndroidManifest.xml:30:9-32:61
+125            android:name="android.adservices.AD_SERVICES_CONFIG"
+125-->[com.google.android.gms:play-services-measurement-api:21.5.0] /Users/aaron/.gradle/caches/transforms-3/f4819810a308322aa0d0539da4b49ba0/transformed/jetified-play-services-measurement-api-21.5.0/AndroidManifest.xml:31:13-65
+126            android:resource="@xml/ga_ad_services_config" />
+126-->[com.google.android.gms:play-services-measurement-api:21.5.0] /Users/aaron/.gradle/caches/transforms-3/f4819810a308322aa0d0539da4b49ba0/transformed/jetified-play-services-measurement-api-21.5.0/AndroidManifest.xml:32:13-58
+127
+128        <provider
+128-->[com.google.firebase:firebase-common:20.4.2] /Users/aaron/.gradle/caches/transforms-3/03f67cfbcf95f87693a92c0410f9793e/transformed/jetified-firebase-common-20.4.2/AndroidManifest.xml:23:9-28:39
+129            android:name="com.google.firebase.provider.FirebaseInitProvider"
+129-->[com.google.firebase:firebase-common:20.4.2] /Users/aaron/.gradle/caches/transforms-3/03f67cfbcf95f87693a92c0410f9793e/transformed/jetified-firebase-common-20.4.2/AndroidManifest.xml:24:13-77
+130            android:authorities="com.galleryapp.firebaseinitprovider"
+130-->[com.google.firebase:firebase-common:20.4.2] /Users/aaron/.gradle/caches/transforms-3/03f67cfbcf95f87693a92c0410f9793e/transformed/jetified-firebase-common-20.4.2/AndroidManifest.xml:25:13-72
+131            android:directBootAware="true"
+131-->[com.google.firebase:firebase-common:20.4.2] /Users/aaron/.gradle/caches/transforms-3/03f67cfbcf95f87693a92c0410f9793e/transformed/jetified-firebase-common-20.4.2/AndroidManifest.xml:26:13-43
+132            android:exported="false"
+132-->[com.google.firebase:firebase-common:20.4.2] /Users/aaron/.gradle/caches/transforms-3/03f67cfbcf95f87693a92c0410f9793e/transformed/jetified-firebase-common-20.4.2/AndroidManifest.xml:27:13-37
+133            android:initOrder="100" />
+133-->[com.google.firebase:firebase-common:20.4.2] /Users/aaron/.gradle/caches/transforms-3/03f67cfbcf95f87693a92c0410f9793e/transformed/jetified-firebase-common-20.4.2/AndroidManifest.xml:28:13-36
+134
+135        <activity
+135-->[com.google.android.gms:play-services-auth:20.7.0] /Users/aaron/.gradle/caches/transforms-3/0da3cdb9584e89dc47782341d0fe303c/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:23:9-27:75
+136            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+136-->[com.google.android.gms:play-services-auth:20.7.0] /Users/aaron/.gradle/caches/transforms-3/0da3cdb9584e89dc47782341d0fe303c/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:24:13-93
+137            android:excludeFromRecents="true"
+137-->[com.google.android.gms:play-services-auth:20.7.0] /Users/aaron/.gradle/caches/transforms-3/0da3cdb9584e89dc47782341d0fe303c/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:25:13-46
+138            android:exported="false"
+138-->[com.google.android.gms:play-services-auth:20.7.0] /Users/aaron/.gradle/caches/transforms-3/0da3cdb9584e89dc47782341d0fe303c/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:26:13-37
+139            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+139-->[com.google.android.gms:play-services-auth:20.7.0] /Users/aaron/.gradle/caches/transforms-3/0da3cdb9584e89dc47782341d0fe303c/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:27:13-72
+140        <!--
+141            Service handling Google Sign-In user revocation. For apps that do not integrate with
+142            Google Sign-In, this service will never be started.
+143        -->
+144        <service
+144-->[com.google.android.gms:play-services-auth:20.7.0] /Users/aaron/.gradle/caches/transforms-3/0da3cdb9584e89dc47782341d0fe303c/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:33:9-37:51
+145            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+145-->[com.google.android.gms:play-services-auth:20.7.0] /Users/aaron/.gradle/caches/transforms-3/0da3cdb9584e89dc47782341d0fe303c/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:34:13-89
+146            android:exported="true"
+146-->[com.google.android.gms:play-services-auth:20.7.0] /Users/aaron/.gradle/caches/transforms-3/0da3cdb9584e89dc47782341d0fe303c/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:35:13-36
+147            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+147-->[com.google.android.gms:play-services-auth:20.7.0] /Users/aaron/.gradle/caches/transforms-3/0da3cdb9584e89dc47782341d0fe303c/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:36:13-107
+148            android:visibleToInstantApps="true" />
+148-->[com.google.android.gms:play-services-auth:20.7.0] /Users/aaron/.gradle/caches/transforms-3/0da3cdb9584e89dc47782341d0fe303c/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:37:13-48
+149
+150        <activity
+150-->[com.google.android.gms:play-services-base:18.0.1] /Users/aaron/.gradle/caches/transforms-3/7bc77237716ecf9e1a931527d9b3ecd9/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
+151            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+151-->[com.google.android.gms:play-services-base:18.0.1] /Users/aaron/.gradle/caches/transforms-3/7bc77237716ecf9e1a931527d9b3ecd9/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
+152            android:exported="false"
+152-->[com.google.android.gms:play-services-base:18.0.1] /Users/aaron/.gradle/caches/transforms-3/7bc77237716ecf9e1a931527d9b3ecd9/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
+153            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+153-->[com.google.android.gms:play-services-base:18.0.1] /Users/aaron/.gradle/caches/transforms-3/7bc77237716ecf9e1a931527d9b3ecd9/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
+154
+155        <receiver
+155-->[com.google.android.gms:play-services-measurement:21.5.0] /Users/aaron/.gradle/caches/transforms-3/bc302d6e0aa6d01823d74b2f569e33a3/transformed/jetified-play-services-measurement-21.5.0/AndroidManifest.xml:29:9-33:20
+156            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+156-->[com.google.android.gms:play-services-measurement:21.5.0] /Users/aaron/.gradle/caches/transforms-3/bc302d6e0aa6d01823d74b2f569e33a3/transformed/jetified-play-services-measurement-21.5.0/AndroidManifest.xml:30:13-85
+157            android:enabled="true"
+157-->[com.google.android.gms:play-services-measurement:21.5.0] /Users/aaron/.gradle/caches/transforms-3/bc302d6e0aa6d01823d74b2f569e33a3/transformed/jetified-play-services-measurement-21.5.0/AndroidManifest.xml:31:13-35
+158            android:exported="false" >
+158-->[com.google.android.gms:play-services-measurement:21.5.0] /Users/aaron/.gradle/caches/transforms-3/bc302d6e0aa6d01823d74b2f569e33a3/transformed/jetified-play-services-measurement-21.5.0/AndroidManifest.xml:32:13-37
+159        </receiver>
+160
+161        <service
+161-->[com.google.android.gms:play-services-measurement:21.5.0] /Users/aaron/.gradle/caches/transforms-3/bc302d6e0aa6d01823d74b2f569e33a3/transformed/jetified-play-services-measurement-21.5.0/AndroidManifest.xml:35:9-38:40
+162            android:name="com.google.android.gms.measurement.AppMeasurementService"
+162-->[com.google.android.gms:play-services-measurement:21.5.0] /Users/aaron/.gradle/caches/transforms-3/bc302d6e0aa6d01823d74b2f569e33a3/transformed/jetified-play-services-measurement-21.5.0/AndroidManifest.xml:36:13-84
+163            android:enabled="true"
+163-->[com.google.android.gms:play-services-measurement:21.5.0] /Users/aaron/.gradle/caches/transforms-3/bc302d6e0aa6d01823d74b2f569e33a3/transformed/jetified-play-services-measurement-21.5.0/AndroidManifest.xml:37:13-35
+164            android:exported="false" />
+164-->[com.google.android.gms:play-services-measurement:21.5.0] /Users/aaron/.gradle/caches/transforms-3/bc302d6e0aa6d01823d74b2f569e33a3/transformed/jetified-play-services-measurement-21.5.0/AndroidManifest.xml:38:13-37
+165        <service
+165-->[com.google.android.gms:play-services-measurement:21.5.0] /Users/aaron/.gradle/caches/transforms-3/bc302d6e0aa6d01823d74b2f569e33a3/transformed/jetified-play-services-measurement-21.5.0/AndroidManifest.xml:39:9-43:72
+166            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+166-->[com.google.android.gms:play-services-measurement:21.5.0] /Users/aaron/.gradle/caches/transforms-3/bc302d6e0aa6d01823d74b2f569e33a3/transformed/jetified-play-services-measurement-21.5.0/AndroidManifest.xml:40:13-87
+167            android:enabled="true"
+167-->[com.google.android.gms:play-services-measurement:21.5.0] /Users/aaron/.gradle/caches/transforms-3/bc302d6e0aa6d01823d74b2f569e33a3/transformed/jetified-play-services-measurement-21.5.0/AndroidManifest.xml:41:13-35
+168            android:exported="false"
+168-->[com.google.android.gms:play-services-measurement:21.5.0] /Users/aaron/.gradle/caches/transforms-3/bc302d6e0aa6d01823d74b2f569e33a3/transformed/jetified-play-services-measurement-21.5.0/AndroidManifest.xml:42:13-37
+169            android:permission="android.permission.BIND_JOB_SERVICE" />
+169-->[com.google.android.gms:play-services-measurement:21.5.0] /Users/aaron/.gradle/caches/transforms-3/bc302d6e0aa6d01823d74b2f569e33a3/transformed/jetified-play-services-measurement-21.5.0/AndroidManifest.xml:43:13-69
+170
+171        <uses-library
+171-->[androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /Users/aaron/.gradle/caches/transforms-3/1a6129b75833001af0c9b683040b6ea3/transformed/jetified-ads-adservices-1.0.0-beta05/AndroidManifest.xml:23:9-25:40
+172            android:name="android.ext.adservices"
+172-->[androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /Users/aaron/.gradle/caches/transforms-3/1a6129b75833001af0c9b683040b6ea3/transformed/jetified-ads-adservices-1.0.0-beta05/AndroidManifest.xml:24:13-50
+173            android:required="false" />
+173-->[androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] /Users/aaron/.gradle/caches/transforms-3/1a6129b75833001af0c9b683040b6ea3/transformed/jetified-ads-adservices-1.0.0-beta05/AndroidManifest.xml:25:13-37
+174
+175        <meta-data
+175-->[com.google.android.gms:play-services-basement:18.2.0] /Users/aaron/.gradle/caches/transforms-3/6ea5954c9161efc9a3dde92daf120e53/transformed/jetified-play-services-basement-18.2.0/AndroidManifest.xml:21:9-23:69
+176            android:name="com.google.android.gms.version"
+176-->[com.google.android.gms:play-services-basement:18.2.0] /Users/aaron/.gradle/caches/transforms-3/6ea5954c9161efc9a3dde92daf120e53/transformed/jetified-play-services-basement-18.2.0/AndroidManifest.xml:22:13-58
+177            android:value="@integer/google_play_services_version" />
+177-->[com.google.android.gms:play-services-basement:18.2.0] /Users/aaron/.gradle/caches/transforms-3/6ea5954c9161efc9a3dde92daf120e53/transformed/jetified-play-services-basement-18.2.0/AndroidManifest.xml:23:13-66
+178
+179        <provider
+179-->[androidx.emoji2:emoji2:1.2.0] /Users/aaron/.gradle/caches/transforms-3/dfd315444c5e010cf3f48c1ecae621af/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+180            android:name="androidx.startup.InitializationProvider"
+180-->[androidx.emoji2:emoji2:1.2.0] /Users/aaron/.gradle/caches/transforms-3/dfd315444c5e010cf3f48c1ecae621af/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+181            android:authorities="com.galleryapp.androidx-startup"
+181-->[androidx.emoji2:emoji2:1.2.0] /Users/aaron/.gradle/caches/transforms-3/dfd315444c5e010cf3f48c1ecae621af/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+182            android:exported="false" >
+182-->[androidx.emoji2:emoji2:1.2.0] /Users/aaron/.gradle/caches/transforms-3/dfd315444c5e010cf3f48c1ecae621af/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+183            <meta-data
+183-->[androidx.emoji2:emoji2:1.2.0] /Users/aaron/.gradle/caches/transforms-3/dfd315444c5e010cf3f48c1ecae621af/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+184                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+184-->[androidx.emoji2:emoji2:1.2.0] /Users/aaron/.gradle/caches/transforms-3/dfd315444c5e010cf3f48c1ecae621af/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+185                android:value="androidx.startup" />
+185-->[androidx.emoji2:emoji2:1.2.0] /Users/aaron/.gradle/caches/transforms-3/dfd315444c5e010cf3f48c1ecae621af/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+186            <meta-data
+186-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/aaron/.gradle/caches/transforms-3/add8748153c81371ec6beac3b3a624da/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
+187                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+187-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/aaron/.gradle/caches/transforms-3/add8748153c81371ec6beac3b3a624da/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78
+188                android:value="androidx.startup" />
+188-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/aaron/.gradle/caches/transforms-3/add8748153c81371ec6beac3b3a624da/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
+189        </provider>
+190
+191        <meta-data
+191-->[com.facebook.soloader:soloader:0.10.5] /Users/aaron/.gradle/caches/transforms-3/2add1735ebfa5047b843e99834f8ccf7/transformed/jetified-soloader-0.10.5/AndroidManifest.xml:12:9-14:37
+192            android:name="com.facebook.soloader.enabled"
+192-->[com.facebook.soloader:soloader:0.10.5] /Users/aaron/.gradle/caches/transforms-3/2add1735ebfa5047b843e99834f8ccf7/transformed/jetified-soloader-0.10.5/AndroidManifest.xml:13:13-57
+193            android:value="false" />
+193-->[com.facebook.soloader:soloader:0.10.5] /Users/aaron/.gradle/caches/transforms-3/2add1735ebfa5047b843e99834f8ccf7/transformed/jetified-soloader-0.10.5/AndroidManifest.xml:14:13-34
+194    </application>
+195
+196</manifest>
