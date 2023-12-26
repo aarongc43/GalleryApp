@@ -3,6 +3,7 @@ import {Dimensions, StyleSheet} from 'react-native';
 const textRegular = {
   fontSize: 24,
   fontFamily: 'ACaslonPro-Regular',
+  color: 'black',
 };
 
 const textBoldItalic = {
@@ -37,7 +38,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
-    backgroundColor: '#a9a9a9',
+    backgroundColor: '#fefefe',
     height: '100%',
     paddingTop: 2,
     padding: 20,
@@ -87,7 +88,7 @@ export default StyleSheet.create({
     fontFamily: 'ACaslonPro-Bold',
     fontSize: 20,
     textAlign: 'right',
-    color: '#7E7E7E',
+    color: 'black',
   },
   horizontalLine: {
     marginBottom: 10,
@@ -134,7 +135,7 @@ export default StyleSheet.create({
   unselectedText: {
     fontFamily: 'ACaslonPro-Bold',
     fontSize: 18,
-    color: 'gray',
+    color: 'black',
   },
   profilePhoto: {
     width: width * 0.8,
@@ -142,7 +143,6 @@ export default StyleSheet.create({
     borderRadius: (width * 0.8) / 2,
     alignSelf: 'center',
     marginVertical: 10,
-    borderWidth: 2,
     borderColor: '#333',
   },
   exhibitionContainer: {
@@ -157,7 +157,6 @@ export default StyleSheet.create({
     aspectRatio: 1,
     alignSelf: 'center',
     resizeMode: 'cover',
-    borderWidth: 2,
     borderColor: '#333',
   },
   artistName: {

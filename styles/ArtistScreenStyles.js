@@ -9,7 +9,7 @@ const sharedStyles = StyleSheet.create({
   horizontalLine: {
     marginBottom: 10,
     width: '100%', // Adjusted for full width
-    borderBottomColor: '#D9D9D9',
+    borderBottomColor: 'black',
     borderBottomWidth: 1,
   },
   imageStyle: {

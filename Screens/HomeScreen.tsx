@@ -28,7 +28,7 @@ type HomeScreenProps = {
 
 function HomeScreen({navigation}: HomeScreenProps) {
   const [artistProfiles, setArtistProfiles] = useState([]);
-  const artistNames = ['Haley Josephs', 'Yucca Stuff', 'Arthur Vallin'];
+  const artistNames = ['Yang Seung Jin', 'Yucca Stuff', 'Arthur Vallin'];
   const artistArticles = ['Haley Josephs', 'Tafy LaPlanche', 'Yang Seung Jin'];
   const {width} = Dimensions.get('window');
   const scrollViewRef = useRef();
